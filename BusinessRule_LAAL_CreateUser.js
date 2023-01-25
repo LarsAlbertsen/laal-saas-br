@@ -6,14 +6,14 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "LAAL_Delete",
+  "id" : "LAAL_CreateUser",
   "type" : "BusinessAction",
   "setupGroups" : [ "Actions" ],
-  "name" : "LAAL_Delete",
+  "name" : "LAAL_CreateUser",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Item" ],
-  "allObjectTypesValid" : false,
+  "validObjectTypes" : [ ],
+  "allObjectTypesValid" : true,
   "runPrivileged" : false,
   "onApprove" : "Never",
   "dependencies" : [ ]
@@ -23,8 +23,8 @@
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
   "binds" : [ {
-    "contract" : "CurrentObjectBindContract",
-    "alias" : "node",
+    "contract" : "ManagerBindContract",
+    "alias" : "manager",
     "parameterClass" : "null",
     "value" : null,
     "description" : null
@@ -33,10 +33,8 @@
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node) {
-// another change xxyy
-if (node!=null) {
-	node.delete();
-}
-
+exports.operation0 = function (manager) {
+var stiboGroup = manager.getGroupHome().getGroupByID("Stibo");
+var newUser = stiboGroup.createUser("NewUser2", "Hello","laal@stibosystems.com");
+newUser.setName("My New User");
 }
