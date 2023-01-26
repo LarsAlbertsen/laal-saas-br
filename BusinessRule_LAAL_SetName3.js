@@ -6,10 +6,10 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "LAAL_SetName",
+  "id" : "LAAL_SetName3",
   "type" : "BusinessAction",
   "setupGroups" : [ "Actions" ],
-  "name" : "LAAL_SetName",
+  "name" : "LAAL_SetName3",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ "Item", "Variant" ],
@@ -32,8 +32,8 @@
     "value" : null,
     "description" : null
   }, {
-    "contract" : "DataIssuesContextBind",
-    "alias" : "message",
+    "contract" : "LoggerBindContract",
+    "alias" : "logger",
     "parameterClass" : "null",
     "value" : null,
     "description" : null
@@ -42,20 +42,14 @@
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node,message,lib) {
+exports.operation0 = function (node,logger,lib) {
 /** 
- *  This is a comment
+ *  This is a comment *
  */
 var name = node.getName();
 logger.info("name="+name);
-name = "Lars X "+name;
+name = "Lars X3 "+name;
 node.setName(name);
 logger.info("Xname="+name);
 
-// Hello World
-
-var x = lib.test();
-
-message.addError("Hello ["+name+"]", node);
-return message;
 }

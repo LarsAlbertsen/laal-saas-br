@@ -34,11 +34,8 @@
 }
 */
 exports.operation0 = function (manager) {
-//
 // Create a new user in system
-//
 var stiboGroup = manager.getGroupHome().getGroupByID("Stibo");
 var newUser = stiboGroup.createUser("NewUser2", "Hello","laal@stibosystems.com");
 newUser.setName("My New User");
-
 }
