@@ -44,11 +44,11 @@
 */
 exports.operation0 = function (node,message,lib) {
 /** 
- *  This is a comment
+ *  This is a comment *
  */
 var name = node.getName();
 logger.info("name="+name);
-name = "Lars X "+name;
+name = "X "+name;
 node.setName(name);
 logger.info("Xname="+name);
 

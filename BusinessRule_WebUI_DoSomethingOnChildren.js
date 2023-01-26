@@ -6,14 +6,14 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "ListValidatorNames",
+  "id" : "WebUI_DoSomethingOnChildren",
   "type" : "BusinessAction",
   "setupGroups" : [ "Actions" ],
-  "name" : "ListValidatorNames",
+  "name" : "WebUI_DoSomethingOnChildren",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Family", "Item", "Variant" ],
-  "allObjectTypesValid" : false,
+  "validObjectTypes" : [ ],
+  "allObjectTypesValid" : true,
   "runPrivileged" : false,
   "onApprove" : "Never",
   "dependencies" : [ ]
@@ -28,24 +28,24 @@
     "parameterClass" : "null",
     "value" : null,
     "description" : null
+  }, {
+    "contract" : "WebUiContextBind",
+    "alias" : "web",
+    "parameterClass" : "null",
+    "value" : null,
+    "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node) {
-var allValues = node.getValues().toArray();
-
-for (var i=0; i<allValues.length; i++) {
-	var aValue = allValues[i];
-	try {
-		var a = aValue.getAttribute();
-		var m1 = a.getClass().getMethod("getValidatorName");
-		var validatorName = m1.invoke(a);
-
-		logger.info(aValue.getAttribute().getTitle()+"="+validatorName);
-	} catch (e) {
-		logger.info("ERROR " +e);
+exports.operation0 = function (node,web) {
+logger.info("Node="+node);
+logger.info("Web="+web);
+if (web!=null) {
+	var selected = web.getSelection();
+	for (var i=0; i<selected.size(); i++) {
+		logger.info("i+"+i+"="+selected.get(i));
 	}
 }
 
