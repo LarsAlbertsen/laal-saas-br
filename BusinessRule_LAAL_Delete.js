@@ -34,7 +34,6 @@
 }
 */
 exports.operation0 = function (node) {
-// another change xxyy
 if (node!=null) {
 	node.delete();
 }
