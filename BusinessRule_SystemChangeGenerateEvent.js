@@ -9,7 +9,7 @@
   "id" : "SystemChangeGenerateEvent",
   "type" : "BusinessAction",
   "setupGroups" : [ "Actions" ],
-  "name" : "SystemChangeGenerateEvent",
+  "name" : "System Change Generate Event",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
