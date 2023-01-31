@@ -44,7 +44,7 @@ for (var i=0; i<selection.size(); i++) {
 	}
 	var newName = "Prefix "+curName;
 	logger.info("["+newName+"]");
-	node.setName(newName);
+	node.setName(newName.trim());
 
 }
 
