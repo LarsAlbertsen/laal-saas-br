@@ -34,7 +34,7 @@
 }
 */
 exports.operation0 = function (web) {
-var selection = web.getSelected();
+var selection = web.getSelection();
 for (var i=0; i<selection.size(); i++) {
 	var node = selection.get(i);
 
@@ -43,6 +43,7 @@ for (var i=0; i<selection.size(); i++) {
 		curName = "";
 	}
 	var newName = "Prefix "+curName;
+	logger.info("["+newName+"]");
 	node.setName(newName);
 
 }
