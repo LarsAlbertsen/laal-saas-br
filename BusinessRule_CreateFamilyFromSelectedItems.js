@@ -70,7 +70,9 @@ for (var i=0; i<selection.size(); i++) {
 		else {
 			for (var j=0; j<nameParts.length; j++) {
 				var part = nameParts[j].trim();
+				logger.info("Checking "+familyName+" "+ part);
 				if (!familyName.contains(part)) {
+					logger.info("Removing "+part);
 					familyName.remove(part);
 				}
 			}
