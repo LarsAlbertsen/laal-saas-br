@@ -23,7 +23,7 @@
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
   "binds" : [ {
-    "contract" : "LoggerBindContract",
+    "contract" : "CurrentObjectBindContract",
     "alias" : "node",
     "parameterClass" : "null",
     "value" : null,

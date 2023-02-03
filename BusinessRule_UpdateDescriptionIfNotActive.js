@@ -41,9 +41,9 @@
 */
 exports.operation0 = function (node,isActive) {
 if (isActive.evaluate(node)) {
-	.... handle active node
+	//.... handle active node
 } else {
-	.... handle inactive node
+	//.... handle inactive node
 }
 
 
