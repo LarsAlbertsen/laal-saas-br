@@ -74,12 +74,12 @@ for (var i=0; i<selection.size(); i++) {
 			var l = new java.util.ArrayList();
 			for (var j=0; j<familyName.size(); j++) {
 				var checkName = familyName.get(j);
-				var nameParts = n.getName().split(" ");
-				logger.info("checkName "+j+" "+checkName+" in "+nameParts);
+				//var nameParts = n.getName().split(" ");
+				logger.info("checkName "+j+" "+checkName+" in "+n.getName());
 
 				for (var j=0; j<nameParts.length; j++) {
 					var part = nameParts[j].trim();
-					logger.info("Checking "+ part);
+					logger.info("Compare "+ checkName+"="+part);
 					l.add(part);
 				}
 				/*
