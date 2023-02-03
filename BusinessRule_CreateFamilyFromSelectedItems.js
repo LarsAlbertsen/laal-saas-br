@@ -64,7 +64,7 @@ for (var i=0; i<selection.size(); i++) {
 		var nameParts = n.getName().split(" ");
 		if (familyName.size()==0) {
 			for (var j=0; j<nameParts.length; j++) {
-				familyName.put(nameParts[j].trim());
+				familyName.add(nameParts[j].trim());
 			}
 		}
 	}
