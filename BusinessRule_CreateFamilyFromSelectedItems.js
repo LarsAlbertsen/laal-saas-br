@@ -28,12 +28,32 @@
     "parameterClass" : "null",
     "value" : null,
     "description" : null
+  }, {
+    "contract" : "ListOfValuesBindContract",
+    "alias" : "FamilyObjType",
+    "parameterClass" : "com.stibo.core.domain.impl.ListOfValuesImpl",
+    "value" : "Family Variant",
+    "description" : null
+  }, {
+    "contract" : "ObjectTypeBindContract",
+    "alias" : "VariantObjType",
+    "parameterClass" : "com.stibo.core.domain.impl.ObjectTypeImpl",
+    "value" : "Variant",
+    "description" : null
+  }, {
+    "contract" : "CurrentObjectBindContract",
+    "alias" : "node",
+    "parameterClass" : "null",
+    "value" : null,
+    "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (web) {
+exports.operation0 = function (web,FamilyObjType,VariantObjType,node) {
 var selection = web.getSelection();
+logger.info("node="+node.getTitle());
 logger.info("selection="+selection);
+
 }
