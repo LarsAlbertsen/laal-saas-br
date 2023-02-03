@@ -56,10 +56,20 @@ var selection = web.getSelection();
 logger.info("node="+node.getTitle());
 logger.info("selection="+selection);
 
-var familyName = new java.util.HashMap();
+var familyName = new java.util.LinkedHashMap();
 for (var i=0; i<selection.size(); i++) {
 	var n = selection.get(i);
 	logger.info("["+n.getName()+"]");
+	if (n.getName()!=null) {
+		var nameParts = n.getName().split();
+		if (familyName.size()==0) {
+			for (var j=0; j<nameParts.length; j++) {
+				familyName.put(nameParts[j];
+			}
+		}
+	}
+
 }
 
+logger.info("familyName="+familyName);
 }
