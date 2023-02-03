@@ -74,8 +74,15 @@ for (var i=0; i<selection.size(); i++) {
 			var l = new java.util.ArrayList();
 			for (var j=0; j<familyName.size(); j++) {
 				var checkName = familyName.get(j);
-				logger.info("checkName "+j+" "+checkName);
 				var nameParts = n.getName().split(" ");
+				logger.info("checkName "+j+" "+checkName+" in "+nameParts);
+
+				for (var j=0; j<nameParts.length; j++) {
+					var part = nameParts[j].trim();
+					logger.info("Checking "+ part);
+					l.add(part);
+				}
+				/*
 				for (var j=0; j<nameParts.length; j++) {
 					var part = nameParts[j].trim();
 					logger.info("Checking "+ part);
@@ -86,10 +93,10 @@ for (var i=0; i<selection.size(); i++) {
 					else {
 						logger.info("Removing "+part);
 					}
-				}
+				}*/
 			}
 			familyName = l;
-			logger.info("before checking familyName="+familyName +" with "+n.getName());
+			logger.info("after checking familyName="+familyName +" with "+n.getName());
 
 		}
 	}
