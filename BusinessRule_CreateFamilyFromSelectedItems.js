@@ -72,9 +72,9 @@ for (var i=0; i<selection.size(); i++) {
 			logger.info("checking familyName="+familyName +" with "+n.getName());
 
 			var l = new java.util.ArrayList();
-			for (var j=0; j<familyName.length; j++) {
+			for (var j=0; j<familyName.size(); j++) {
 				var checkName = familyName.get(j);
-
+				logger.info("checkName "+j+" "+checkName);
 				var nameParts = n.getName().split(" ");
 				for (var j=0; j<nameParts.length; j++) {
 					var part = nameParts[j].trim();
