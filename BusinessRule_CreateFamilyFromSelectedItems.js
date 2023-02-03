@@ -67,6 +67,14 @@ for (var i=0; i<selection.size(); i++) {
 				familyName.add(nameParts[j].trim());
 			}
 		}
+		else {
+			for (var j=0; j<nameParts.length; j++) {
+				var part = nameParts[j].trim();
+				if (!familyName.contains(part)) {
+					familyName.remove(part);
+				}
+			}
+		}
 	}
 
 }
