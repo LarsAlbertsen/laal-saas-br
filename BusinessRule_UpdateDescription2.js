@@ -46,7 +46,9 @@
 }
 */
 exports.operation0 = function (node,isActive,updateDescription) {
-if (isActive.evaluate(node)) {
+logger.info(isActive.evaluate(node).isNonApplicable())
+if (isActive.evaluate(node).isAccepted()) {
+	logger.info('sdf')
 	updateDescription.execute(node)
 }
 
