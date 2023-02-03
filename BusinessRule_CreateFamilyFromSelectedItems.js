@@ -56,7 +56,7 @@ var selection = web.getSelection();
 logger.info("node="+node.getTitle());
 logger.info("selection="+selection);
 
-var familyName = new java.util.LinkedHashMap();
+var familyName = new java.util.LinkedHashSet();
 for (var i=0; i<selection.size(); i++) {
 	var n = selection.get(i);
 	logger.info("["+n.getName()+"]");
