@@ -69,7 +69,7 @@ for (var i=0; i<selection.size(); i++) {
 			logger.info("Initial familyName="+familyName);
 		}
 		else {
-			logger.info("checking familyName="+familyName +" with "+n.getName());
+			logger.info("before checking familyName="+familyName +" with "+n.getName());
 
 			var l = new java.util.ArrayList();
 			for (var j=0; j<familyName.size(); j++) {
@@ -83,9 +83,14 @@ for (var i=0; i<selection.size(); i++) {
 						logger.info("Keeping "+part);
 						l.add(part);
 					}
+					else {
+						logger.info("Removing "+part);
+					}
 				}
 			}
 			familyName = l;
+			logger.info("before checking familyName="+familyName +" with "+n.getName());
+
 		}
 	}
 }
