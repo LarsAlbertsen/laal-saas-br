@@ -56,7 +56,7 @@ var selection = web.getSelection();
 logger.info("node="+node.getTitle());
 logger.info("selection="+selection);
 
-var familyName = new java.util.LinkedHashSet();
+var familyName = new java.util.ArrayList();
 for (var i=0; i<selection.size(); i++) {
 	var n = selection.get(i);
 	logger.info("["+n.getName()+"]");
@@ -68,18 +68,26 @@ for (var i=0; i<selection.size(); i++) {
 			}
 		}
 		else {
-			for (var j=0; j<nameParts.length; j++) {
-				var part = nameParts[j].trim();
-				logger.info("Checking "+familyName+" "+ part);
-				if (!familyName.contains(part)) {
-					logger.info("Removing "+part);
-					familyName.remove(part);
+			logger.info("checking familyName="+familyName);
+
+			var l = new java.util.ArrayList();
+			for (var j=0; j<familyName.length; j++) {
+				var ckeckName = familyName.get(j);
+				
+				for (var j=0; j<nameParts.length; j++) {
+					var part = nameParts[j].trim();
+					logger.info("Checking "+ckeckName+" "+ part);
+					if (checkName.equalsIgnoreCase(part)) {
+						logger.info("Keeping "+part);
+						l.add(part);
+					}
 				}
 			}
+			familyName = l;
 		}
 	}
-
 }
 
 logger.info("familyName="+familyName);
+
 }
