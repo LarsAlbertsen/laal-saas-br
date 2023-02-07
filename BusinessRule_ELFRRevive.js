@@ -42,7 +42,10 @@
 exports.operation0 = function (logger,manager) {
 var nodeHome = manager.getNodeHome()
 var p = nodeHome.getObjectByKey('ItemKey', '107239')
-logger.info('by key ' + p)
+logger.info('by key ' + p.getParent())
 var p2 = manager.getProductHome().getProductByID(p.getID())
+logger.info('by id ' + p2)
+p.getParent().createProduct(p.getID(), p.getObjectType())
+p2 = manager.getProductHome().getProductByID(p.getID())
 logger.info('by id ' + p2)
 }
