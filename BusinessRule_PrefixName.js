@@ -8,7 +8,7 @@
 {
   "id" : "PrefixName",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
+  "setupGroups" : [ "LAALBRGroup" ],
   "name" : "PrefixName",
   "description" : null,
   "scope" : "Global",

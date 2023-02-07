@@ -8,7 +8,7 @@
 {
   "id" : "ActionToTest",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
+  "setupGroups" : [ "LAALBRGroup" ],
   "name" : "ActionToTest",
   "description" : null,
   "scope" : "Global",

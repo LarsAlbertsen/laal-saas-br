@@ -8,7 +8,7 @@
 {
   "id" : "SystemChangeNOP",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
+  "setupGroups" : [ "LAALBRGroup" ],
   "name" : "System Change NOP",
   "description" : null,
   "scope" : "Global",

@@ -8,7 +8,7 @@
 {
   "id" : "CreateFamilyFromSelectedItems",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
+  "setupGroups" : [ "LAALBRGroup" ],
   "name" : "CreateFamilyFromSelectedItems",
   "description" : null,
   "scope" : "Global",

@@ -8,7 +8,7 @@
 {
   "id" : "LAAL_CreateUser",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
+  "setupGroups" : [ "LAALBRGroup" ],
   "name" : "LAAL_CreateUser",
   "description" : null,
   "scope" : "Global",
@@ -44,7 +44,10 @@ exports.operation0 = function (manager,logger) {
 //  Create a new user in system
 //
 var stiboGroup = manager.getGroupHome().getGroupByID("Stibo");
+
 var newUser = stiboGroup.createUser("NewUser2", "Hello","laal@stibosystems.com");
+
 newUser.setName("My New User");
+
 
 }

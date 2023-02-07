@@ -8,7 +8,7 @@
 {
   "id" : "RemoveFromWorkflow",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
+  "setupGroups" : [ "LAALBRGroup" ],
   "name" : "Remove From Workflow",
   "description" : null,
   "scope" : "Global",

@@ -8,7 +8,7 @@
 {
   "id" : "PrintDataContainers",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
+  "setupGroups" : [ "LAALBRGroup" ],
   "name" : "PrintDataContainers",
   "description" : null,
   "scope" : "Global",

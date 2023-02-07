@@ -8,7 +8,7 @@
 {
   "id" : "LAAL_SetName",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
+  "setupGroups" : [ "LAALBRGroup" ],
   "name" : "LAAL_SetName",
   "description" : null,
   "scope" : "Global",

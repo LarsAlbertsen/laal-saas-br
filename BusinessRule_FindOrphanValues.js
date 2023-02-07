@@ -8,7 +8,7 @@
 {
   "id" : "FindOrphanValues",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
+  "setupGroups" : [ "LAALBRGroup" ],
   "name" : "FindOrphanValues",
   "description" : null,
   "scope" : "Global",

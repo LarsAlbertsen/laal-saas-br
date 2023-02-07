@@ -8,7 +8,7 @@
 {
   "id" : "WebUI_DoSomethingOnChildren",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
+  "setupGroups" : [ "LAALBRGroup" ],
   "name" : "WebUI_DoSomethingOnChildren",
   "description" : null,
   "scope" : "Global",

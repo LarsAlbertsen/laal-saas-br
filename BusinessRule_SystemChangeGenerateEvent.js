@@ -8,7 +8,7 @@
 {
   "id" : "SystemChangeGenerateEvent",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
+  "setupGroups" : [ "LAALBRGroup" ],
   "name" : "System Change Generate Event",
   "description" : null,
   "scope" : "Global",

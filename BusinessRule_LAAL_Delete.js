@@ -8,7 +8,7 @@
 {
   "id" : "LAAL_Delete",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
+  "setupGroups" : [ "LAALBRGroup" ],
   "name" : "LAAL_Delete",
   "description" : null,
   "scope" : "Global",

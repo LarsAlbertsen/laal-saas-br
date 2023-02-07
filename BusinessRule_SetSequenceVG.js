@@ -8,7 +8,7 @@
 {
   "id" : "SetSequenceVG",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
+  "setupGroups" : [ "LAALBRGroup" ],
   "name" : "SetSequenceVG",
   "description" : null,
   "scope" : "Global",
