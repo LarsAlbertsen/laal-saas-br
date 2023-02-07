@@ -48,4 +48,10 @@ logger.info('by id ' + p2)
 p.getParent().createProduct(p.getID(), p.getObjectType())
 p2 = manager.getProductHome().getProductByID(p.getID())
 logger.info('by id ' + p2)
+
+p2.setName(p.getName())
+p.getValues().toArray().forEach(function(v) {
+	p2.getValue(v.getAttribute().getID()).setSimpleValue(v.getSimpleValue())	
+})
+
 }
