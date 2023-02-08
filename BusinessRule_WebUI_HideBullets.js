@@ -70,8 +70,12 @@ var bullet01A = attrHome.getAttributeByID("3b8d7d7e-9ff9-4b2b-99ca-57a1ba19eb94"
 var bullet02A = attrHome.getAttributeByID("15271107-6854-40a9-bcd6-b320407d8544");
 var bullet03A = attrHome.getAttributeByID("fed33381-f352-458d-9732-11e1053008c2");
 
+logger.info("WebUI_HideBullets_2");
+
 mandatory.setMandatory(currentNode, bullet01A);
 mandatory.setMandatory(currentNode, bullet02A);
+
+logger.info("WebUI_HideBullets_3");
 
 if (bullet01V==null) {
 	logger.info("Hiding Bullet02");
