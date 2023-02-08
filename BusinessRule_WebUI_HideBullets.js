@@ -64,6 +64,10 @@
 }
 */
 exports.operation0 = function (hidden,manager,bullet01V,currentNode,bullet02V,mandatory) {
+if (currentNode==null) {
+	// From init
+	return true;
+}
 logger.info("WebUI_HideBullets on "+currentNode);
 var attrHome = manager.getAttributeHome();
 var bullet01A = attrHome.getAttributeByID("3b8d7d7e-9ff9-4b2b-99ca-57a1ba19eb94");
