@@ -1,0 +1,59 @@
+/*===== export metadata =====
+{
+  "contextId" : "Context1",
+  "workspaceId" : "Main"
+}
+*/
+/*===== business rule definition =====
+{
+  "id" : "ELFRDelete",
+  "type" : "BusinessAction",
+  "setupGroups" : [ "ELFRBRGroup" ],
+  "name" : "ELFRDelete",
+  "description" : null,
+  "scope" : "Global",
+  "validObjectTypes" : [ ],
+  "allObjectTypesValid" : true,
+  "runPrivileged" : false,
+  "onApprove" : "Never",
+  "dependencies" : [ ]
+}
+*/
+/*===== business rule plugin definition =====
+{
+  "pluginId" : "JavaScriptBusinessActionWithBinds",
+  "binds" : [ {
+    "contract" : "LoggerBindContract",
+    "alias" : "logger",
+    "parameterClass" : "null",
+    "value" : null,
+    "description" : null
+  }, {
+    "contract" : "ManagerBindContract",
+    "alias" : "manager",
+    "parameterClass" : "null",
+    "value" : null,
+    "description" : null
+  } ],
+  "messages" : [ ],
+  "pluginType" : "Operation"
+}
+*/
+exports.operation0 = function (logger,manager) {
+var nodeHome = manager.getNodeHome()
+var p = nodeHome.getObjectByKey('ItemKey', '107239')
+logger.info('by key ' + p.getParent())
+var p2 = manager.getProductHome().getProductByID(p.getID())
+if (!p2) {
+	//When we cannot get by ID, it is in Recycle Bin
+	p.getParent().createProduct(p.getID(), p.getObjectType())
+	p2 = manager.getProductHome().getProductByID(p.getID())
+	logger.info('by id ' + p2)
+	p2.setName(p.getName())
+	p.getValues().toArray().forEach(function(v) {
+		p2.getValue(v.getAttribute().getID()).setSimpleValue(v.getSimpleValue())	
+	})
+}
+
+
+}
