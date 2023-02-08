@@ -72,6 +72,10 @@ var bullet03A = attrHome.getAttributeByID("fed33381-f352-458d-9732-11e1053008c2"
 
 logger.info("WebUI_HideBullets_2");
 
+if (bullet01A==null || bullet02A==null) {
+	logger.info("WebUI_HideBullets_2 - NULL Bullets");
+	return true;
+}
 mandatory.setMandatory(currentNode, bullet01A);
 mandatory.setMandatory(currentNode, bullet02A);
 
