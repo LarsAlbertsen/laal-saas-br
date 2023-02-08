@@ -13,9 +13,41 @@
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
-  "allObjectTypesValid" : false,
+  "allObjectTypesValid" : true,
   "runPrivileged" : false,
   "onApprove" : "Never",
   "dependencies" : [ ]
 }
 */
+/*===== business rule plugin definition =====
+{
+  "pluginId" : "JavaScriptBusinessActionWithBinds",
+  "binds" : [ {
+    "contract" : "CurrentObjectBindContract",
+    "alias" : "node",
+    "parameterClass" : "null",
+    "value" : null,
+    "description" : null
+  }, {
+    "contract" : "LoggerBindContract",
+    "alias" : "logger",
+    "parameterClass" : "null",
+    "value" : null,
+    "description" : null
+  } ],
+  "messages" : [ ],
+  "pluginType" : "Operation"
+}
+*/
+exports.operation0 = function (node,logger) {
+function log(msg) {
+	logger.info('CreateItem WF: ' + msg)
+}
+
+node.getValues().toArray().forEach(function(v) {
+	if (v.getSimpleValue()) {
+		log(v.getAttribute().getID() + '=' + v.getSimpleValue())		
+	}
+})
+
+}
