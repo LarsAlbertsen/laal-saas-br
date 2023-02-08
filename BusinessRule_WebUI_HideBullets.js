@@ -64,7 +64,7 @@
 }
 */
 exports.operation0 = function (hidden,manager,bullet01V,currentNode,bullet02V,mandatory) {
-logger.info("WebUI_HideBullets");
+logger.info("WebUI_HideBullets on "+currentNode);
 var attrHome = manager.getAttributeHome();
 var bullet01A = attrHome.getAttributeByID("3b8d7d7e-9ff9-4b2b-99ca-57a1ba19eb94");
 var bullet02A = attrHome.getAttributeByID("15271107-6854-40a9-bcd6-b320407d8544");
