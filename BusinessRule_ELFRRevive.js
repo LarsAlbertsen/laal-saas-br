@@ -42,17 +42,16 @@
 exports.operation0 = function (logger,manager) {
 var nodeHome = manager.getNodeHome()
 var p = nodeHome.getObjectByKey('ItemKey', '107239')
-logger.info('by key ' + p.getParent())
-var p2 = manager.getProductHome().getProductByID(p.getID())
-if (!p2) {
-	//When we cannot get by ID, it is in Recycle Bin
-	p.getParent().createProduct(p.getID(), p.getObjectType())
-	p2 = manager.getProductHome().getProductByID(p.getID())
-	logger.info('by id ' + p2)
-	p2.setName(p.getName())
-	p.getValues().toArray().forEach(function(v) {
-		p2.getValue(v.getAttribute().getID()).setSimpleValue(v.getSimpleValue())	
-	})
+if (p) {
+	var p2 = manager.getProductHome().getProductByID(p.getID())
+	if (!p2) {
+		//When we cannot get by ID, it is in Recycle Bin
+		p2 = p.getParent().createProduct(p.getID(), p.getObjectType())
+		p2.setName(p.getName())
+		p.getValues().toArray().forEach(function(v) {
+			p2.getValue(v.getAttribute().getID()).setSimpleValue(v.getSimpleValue())	
+		})
+	}	
 }
 
 
