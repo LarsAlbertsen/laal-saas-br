@@ -50,4 +50,6 @@ node.getValues().toArray().forEach(function(v) {
 	}
 })
 
+a = 10
+log(a)
 }
