@@ -66,20 +66,5 @@ var querySpecification = h.queryFor(com.stibo.core.domain.Product).where(
 	c.name().like(searchString)
      .and(c.objectType(ItemObjType))
 );
-
-/*
-
-var querySpecification = h.queryFor(com.stibo.core.domain.entity.Entity).where(
-     c.valueOf(active).eq("No")
-     .and(c.objectType(location))
- );
-
-var querySpecification = h.queryFor(com.stibo.core.domain.Product).where(
-     c.objectType(LeafObjType)
-);
-
-  
-  */
- 
 return querySpecification;
 }
