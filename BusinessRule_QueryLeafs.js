@@ -63,7 +63,7 @@ exports.operation0 = function (log,manager,LeafObjType,currentNode,searchString)
 var c = com.stibo.query.condition.Conditions;
 var h = manager.getHome(com.stibo.query.home.QueryHome);
 var querySpecification = h.queryFor(com.stibo.core.domain.Product).where(
-	c.name().like("searchString")
+	c.name().like(searchString)
      .and(c.objectType(LeafObjType))
 );
 
