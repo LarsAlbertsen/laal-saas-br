@@ -52,4 +52,8 @@ user.getValues().toArray().forEach(function(v) {
 	logger.info(v.getAttribute().getID() + ' ' + v.getSimpleValue())	
 })
 
+var method = user.getClass().getMethod('getLog')
+var res = method.invoke(user)
+logger.info(res)
+
 }
