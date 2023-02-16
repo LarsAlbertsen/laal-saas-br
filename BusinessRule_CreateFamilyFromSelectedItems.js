@@ -61,7 +61,7 @@ for (var i=0; i<selection.size(); i++) {
 	var currentNode = selection.get(i);
 	logger.info("currentNode ["+currentNode.getName()+"]");
 	if (currentNode.getName()!=null) {
-		var nameParts = n.getName().split(" ");
+		var nameParts = currentNode.getName().split(" ");
 		if (i==0) {
 			for (var j=0; j<nameParts.length; j++) {
 				candidates.add(nameParts[j].trim());
