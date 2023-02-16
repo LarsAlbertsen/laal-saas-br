@@ -93,6 +93,6 @@ for (var i=0; i<selection.size(); i++) {
 	}
 }
 
-logger.info("familyName="+familyName);
+logger.info("final candidates ="+candidates);
 
 }
