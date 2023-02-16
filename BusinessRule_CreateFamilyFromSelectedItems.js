@@ -116,5 +116,13 @@ for (var i=0; i<candidates.size(); i++) {
 }
 newName = newName.trim();
 logger.info("newName = ["+newName+"]");
+if (newName.length>0) {
+	logger.info("Create Family");
+	var newFamily = node.createProduct(null, "Family");
+	newFamily.setName(newName);
+	for (var i=0; i<selection.size(); i++) {
+		selection.setParentAndObjectType(node, VariantObjType);
+	}
+}
 
 }
