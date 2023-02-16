@@ -74,6 +74,12 @@ for (var i=0; i<selection.size(); i++) {
 				curNameParts.add(nameParts[j].trim());
 			}
 			logger.info("curNameParts="+curNameParts);
+			for (var j=0; j<candidates.size(); j++) {
+				if (!curNameParts.contains(candidates.get(j))) {
+					logger.info("\tremove "+candidates[j]);
+					candidates.set(j, null);
+				}
+			}
 			/*if (familyName.size()==0) {
 				for (var j=0; j<nameParts.length; j++) {
 					familyName.add(nameParts[j].trim());
