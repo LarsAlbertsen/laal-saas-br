@@ -107,5 +107,14 @@ for (var i=0; i<selection.size(); i++) {
 }
 
 logger.info("final candidates ="+candidates);
+var newName = "";
+for (var i=0; i<candidates.size(); i++) {
+	var s = candidates.get(j);
+	if (s!=null && !s.equalsIgnoreCase("size")) {
+		newName = newName + s + " ";
+	}
+}
+newName = newName.trim();
+logger.info("newName = ["+newName+"]");
 
 }
