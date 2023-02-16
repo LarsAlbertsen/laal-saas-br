@@ -122,7 +122,7 @@ if (newName.length>0) {
 	newFamily.setName(newName);
 	for (var i=0; i<selection.size(); i++) {
 		//selection.setParentAndObjectType(node, VariantObjType);
-		selection.setObjectType(node, VariantObjType);
+		selection.setObjectType(VariantObjType);
 	}
 }
 
