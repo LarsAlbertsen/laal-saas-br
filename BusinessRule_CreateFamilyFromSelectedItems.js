@@ -121,7 +121,7 @@ if (newName.length>0) {
 	var newFamily = node.createProduct(null, "Family");
 	newFamily.setName(newName);
 	for (var i=0; i<selection.size(); i++) {
-		selection.setParentAndObjectType(node, VariantObjType);
+		//selection.setParentAndObjectType(node, VariantObjType);
 	}
 }
 
