@@ -59,7 +59,7 @@ logger.info("selection="+selection);
 var candidates = new java.util.ArrayList();
 for (var i=0; i<selection.size(); i++) {
 	var currentNode = selection.get(i);
-	logger.info("currentNode ["+currentNode.getName()+"]");
+	logger.info("\ncurrentNode ["+currentNode.getName()+"]");
 	if (currentNode.getName()!=null) {
 		var nameParts = currentNode.getName().split(" ");
 		if (i==0) {
@@ -69,6 +69,11 @@ for (var i=0; i<selection.size(); i++) {
 		}
 		else {
 			logger.info("candidates="+candidates);
+			var curNameParts = new java.util.HashSet();
+			for (var j=0; j<nameParts.length; j++) {
+				curNameParts.add(nameParts[j].trim());
+			}
+			logger.info("curNameParts="+curNameParts);
 			/*if (familyName.size()==0) {
 				for (var j=0; j<nameParts.length; j++) {
 					familyName.add(nameParts[j].trim());
