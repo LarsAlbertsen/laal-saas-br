@@ -75,9 +75,11 @@ for (var i=0; i<selection.size(); i++) {
 			}
 			logger.info("curNameParts="+curNameParts);
 			for (var j=0; j<candidates.size(); j++) {
-				if (!curNameParts.contains(candidates.get(j))) {
-					logger.info("\tremove "+candidates[j]);
-					candidates.set(j, null);
+				if (candidates.get(j)!=null) {
+					if (!curNameParts.contains(candidates.get(j))) {
+						logger.info("\tremove "+candidates.get(j));
+						candidates.set(j, null);
+					}
 				}
 			}
 			/*if (familyName.size()==0) {
