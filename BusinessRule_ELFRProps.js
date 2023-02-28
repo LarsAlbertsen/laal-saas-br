@@ -28,7 +28,7 @@
 }
 */
 exports.operation0 = function () {
-var regs = ['InMemory.Plugin', 'TaskList.Streaming\..*', 'Portal.TaskList.Max']
+var regs = ['InMemory.Plugin', 'TaskList.Streaming\..*', 'Portal.TaskList.Max', 'OAuthSSO\.Logout.*']
 
 function matches(str) {
 	var found = false;
