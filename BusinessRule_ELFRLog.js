@@ -34,15 +34,28 @@
     "parameterClass" : "null",
     "value" : null,
     "description" : null
+  }, {
+    "contract" : "WebUiContextBind",
+    "alias" : "webui",
+    "parameterClass" : "null",
+    "value" : null,
+    "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node,logger) {
+exports.operation0 = function (node,logger,webui) {
 function log(msg) {
 	logger.info('ELFRLog : ' + msg)
 }
 log(node)
+webui.getSelection().toArray().forEach(function(n) {
+	log('Selection ' + n)	
+})
+webui.getSelectedSetOfNodes().toArray().forEach(function(n) {
+	log('getSelectedSetOfNodes ' + n)	
+})
+
 
 }
