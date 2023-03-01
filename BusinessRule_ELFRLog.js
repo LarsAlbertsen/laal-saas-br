@@ -41,15 +41,8 @@
 */
 exports.operation0 = function (node,logger) {
 function log(msg) {
-	logger.info('CreateItem WF: ' + msg)
+	logger.info('ELFRLog : ' + msg)
 }
 log(node)
-node.getValues().toArray().forEach(function(v) {
-	if (v.getSimpleValue()) {
-		log(v.getAttribute().getID() + '=' + v.getSimpleValue())		
-	}
-})
 
-a = 10
-log(a)
 }
