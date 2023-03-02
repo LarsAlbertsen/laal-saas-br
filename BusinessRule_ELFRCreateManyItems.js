@@ -52,9 +52,9 @@
 }
 */
 exports.operation0 = function (parent,logger,itemType,manager) {
-var wf = manager.getWorkflowHome().getWorkflowByID('')
+var wf = manager.getWorkflowHome().getWorkflowByID('CreateItem')
 
-for (var ix = 0; ix<10; ix++) {
+for (var ix = 1; ix<=15000; ix++) {
 	var item = parent.createProduct(ix + '_ELFRITEM', itemType.getID())
 	item.setName(item.getID())
 	item.getValue('ItemKey').setSimpleValue(item.getID())
