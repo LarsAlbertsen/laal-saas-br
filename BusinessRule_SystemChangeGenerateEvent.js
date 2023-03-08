@@ -69,7 +69,8 @@ handleNode(node);
 
 function handleNode(pNode) {
 	if (pNode!=null) {
-		logger.info("SystemChangeGenerateEvent Type="+pNode.getClass().getName());
+		var url = pNode.getURL();
+		logger.info("SystemChangeGenerateEvent Type="+pNode.getClass().getName()+" URL="+url);
 		var type = pNode.getClass().getSimpleName().replace("Front", "").replace("Impl", "");
 		var id = pNode.getID();
 		var user = pNode.getManager().getCurrentUser();
