@@ -52,13 +52,13 @@ node.approve();
 for (var i=0; i<5; i++) {
 	node.setSimpleValue(ItemAttr, ""+i);
 	var targetID = "LAAL-"+Math.floor(Math.random() * productCount);
-	logger.info("TargetID="+target);
+	//logger.info("TargetID="+target);
 	var target = node.getManager().getProductHome().getProductByID(targetID);
 	if (target!=null) {
-		logger.info("Create ref");
+		//logger.info("Create ref");
 		node.createReference(target, refType);
-		node.approve();
 	}
+	node.approve();
 }
 
 }
