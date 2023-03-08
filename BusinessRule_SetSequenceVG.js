@@ -15,7 +15,7 @@
   "validObjectTypes" : [ "Item" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
-  "onApprove" : "Trigger",
+  "onApprove" : "Never",
   "dependencies" : [ ]
 }
 */

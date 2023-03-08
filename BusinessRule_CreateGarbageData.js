@@ -46,19 +46,32 @@
 }
 */
 exports.operation0 = function (node,refType,ItemAttr) {
-var productCount = 10000;
+//logger.info(node.getID());
+
+var productCount = 100000;
+
+
 node.approve();
 
-for (var i=0; i<5; i++) {
-	node.setSimpleValue(ItemAttr, ""+i);
+node.setSimpleValue(ItemAttr, "Some Value");
+
+// maye sure we stop
+var tryCount = 0;
+
+// create reference until we have at least 5
+var allRefs = node.getReferences(refType);
+while (allRefs.size()<5 && tryCount<100) {
 	var targetID = "LAAL-"+Math.floor(Math.random() * productCount);
 	//logger.info("TargetID="+target);
 	var target = node.getManager().getProductHome().getProductByID(targetID);
 	if (target!=null) {
-		//logger.info("Create ref");
+		logger.info("Create ref "+tryCount);
 		node.createReference(target, refType);
+		target.approve();
 	}
-	node.approve();
+	allRefs = node.getReferences(refType);
+	tryCount++;
 }
+node.approve();
 
 }
