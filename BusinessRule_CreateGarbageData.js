@@ -50,14 +50,20 @@ exports.operation0 = function (node,refType,ItemAttr) {
 
 var productCount = 100000;
 
-
-node.approve();
-
-node.setSimpleValue(ItemAttr, "Some Value");
-
 // maye sure we stop
 var tryCount = 0;
 
+while (node.getRevisions().size()<5 && tryCount<100) {
+	node.approve();
+	node.setSimpleValue(ItemAttr, "Some Value "+node.getRevisions().size());
+	tryCount++;
+	logger.info("Size "+node.getRevisions().size() + " tryCount="+tryCount);
+}
+
+
+
+/*
+tryCount = 0;
 // create reference until we have at least 5
 var allRefs = node.getReferences(refType);
 while (allRefs.size()<5 && tryCount<100) {
@@ -73,5 +79,5 @@ while (allRefs.size()<5 && tryCount<100) {
 	tryCount++;
 }
 node.approve();
-
+*/
 }
