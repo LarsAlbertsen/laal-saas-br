@@ -53,9 +53,9 @@ var productCount = 100000;
 // maye sure we stop
 var tryCount = 0;
 
-while (node.getRevisions().size()<5 && tryCount<100) {
+while (node.getRevisions().size()<10 && tryCount<100) {
 	node.approve();
-	node.setSimpleValue(ItemAttr, "Some Value "+node.getRevisions().size());
+	node.setSimpleValue(ItemAttr, "Some Value "+Math.random());
 	tryCount++;
 	logger.info("Size "+node.getRevisions().size() + " tryCount="+tryCount);
 }
