@@ -54,7 +54,7 @@ var revisionCount = 5;
 // maye sure we stop
 var tryCount = 0;
 
-while (node.getRevisions().size()<5 && tryCount<100) {
+while (node.getRevisions().size()<=5 && tryCount<100) {
 	node.setSimpleValue(ItemAttr, "Some Value "+Math.random());
 	node.approve();
 	tryCount++;
