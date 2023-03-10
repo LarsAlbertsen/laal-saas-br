@@ -49,15 +49,16 @@ exports.operation0 = function (node,refType,ItemAttr) {
 //logger.info(node.getID());
 
 var productCount = 100000;
+var revisionCount = 5;
 
 // maye sure we stop
 var tryCount = 0;
 
-while (node.getRevisions().size()<10 && tryCount<100) {
-	node.approve();
+while (node.getRevisions().size()<5 && tryCount<100) {
 	node.setSimpleValue(ItemAttr, "Some Value "+Math.random());
+	node.approve();
 	tryCount++;
-	logger.info("Size "+node.getRevisions().size() + " tryCount="+tryCount);
+	//logger.info("Size "+node.getRevisions().size() + " tryCount="+tryCount);
 }
 
 
