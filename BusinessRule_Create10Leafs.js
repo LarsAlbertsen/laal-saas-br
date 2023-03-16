@@ -37,7 +37,7 @@ exports.operation0 = function (node) {
 var children = node.getChildren();
 if (children==null || children.size()==0) {
 	for (var i=0; i<10; i++) {
-		node.createProduct("","Item");
+		node.createProduct("","Tree");
 	}
 }
 
