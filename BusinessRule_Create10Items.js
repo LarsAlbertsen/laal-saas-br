@@ -6,10 +6,10 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "Create10Leafs",
+  "id" : "Create10Items",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "Create 10 Leafs",
+  "name" : "Create 10 Items",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
@@ -37,7 +37,7 @@ exports.operation0 = function (node) {
 var children = node.getChildren();
 if (children==null || children.size()==0) {
 	for (var i=0; i<10; i++) {
-		node.createProduct("","Item");
+		node.createProduct("","Tree");
 	}
 }
 
