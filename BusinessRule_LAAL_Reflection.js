@@ -39,11 +39,19 @@ for (var i=0; i<allValues.length; i++) {
 	var aValue = allValues[i];
 	var attribute = aValue.getAttribute();
 	var validatorName = getValidatorName(attribute);
-	if ("text".equals(validatorName) || "number".equals(validatorName) || "numeric_text".equals(validatorName)) {
-		logger.info("setTEXT");
+	if (attribute.getListOfValues()!=null) {
+		//logger.info("skipLOV "+attribute.getTitle());
+	}
+	else if ("text".equals(validatorName)) {
+		//logger.info("setTEXT "+attribute.getTitle());
+		node.setSimpleValue(attribute, "Lars");
+	}
+	else if ("number".equals(validatorName) || "numeric_text".equals(validatorName)) {
+		//logger.info("setTEXT "+attribute.getTitle());
+		node.setSimpleValue(attribute, "1");
 	}
 	else {
-		logger.warning("UNKNOWN "+validatorName);
+		//logger.warning("UNKNOWN "+validatorName);
 	}
 }
 
