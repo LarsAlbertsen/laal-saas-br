@@ -34,32 +34,43 @@
 }
 */
 exports.operation0 = function (node) {
-var allValues = node.getValues().toArray();
-for (var i=0; i<allValues.length; i++) {
-	var aValue = allValues[i];
-	var attribute = aValue.getAttribute();
-	var validatorName = getValidatorName(attribute);
-	if (attribute.getListOfValues()!=null) {
-		//logger.info("skipLOV "+attribute.getTitle());
+for (var j=0; j<5; j++) {
+	var allValues = node.getValues().toArray();
+	for (var i=0; i<allValues.length; i++) {
+		var aValue = allValues[i];
+		var attribute = aValue.getAttribute();
+		if (!isUsedByUniqueKey(attribute)) {
+			var validatorName = getValidatorName(attribute);
+			if (attribute.getListOfValues()!=null) {
+				//logger.info("skipLOV "+attribute.getTitle());
+			}
+			else if ("text".equals(validatorName)) {
+				logger.info("setTEXT "+attribute.getTitle());
+				node.setSimpleValue(attribute, "Lars-"+j);
+			}
+			else if ("number".equals(validatorName) || "numeric_text".equals(validatorName)) {
+				logger.info("setTEXT "+attribute.getTitle());
+				node.setSimpleValue(attribute, ""+j);
+			}
+			else {
+				//logger.warning("UNKNOWN "+validatorName);
+			}
+		}
 	}
-	else if ("text".equals(validatorName)) {
-		//logger.info("setTEXT "+attribute.getTitle());
-		node.setSimpleValue(attribute, "Lars");
-	}
-	else if ("number".equals(validatorName) || "numeric_text".equals(validatorName)) {
-		//logger.info("setTEXT "+attribute.getTitle());
-		node.setSimpleValue(attribute, "1");
-	}
-	else {
-		//logger.warning("UNKNOWN "+validatorName);
-	}
+	node.approve();
 }
-
 
 function getValidatorName(pAttr) {
 	var method = pAttr.getClass().getMethod("getValidatorName");
 	//logger.info("Got Method");
 	var oo = method.invoke(pAttr);
+	return oo;
+}
+
+function isUsedByUniqueKey(pAttr) {
+	var method = pAttr.getClass().getMethod("isUsedByUniqueKey");
+	var oo = method.invoke(pAttr);
+	//logger.info("Got isUsedByUniqueKeyod "+oo);
 	return oo;
 }
 
