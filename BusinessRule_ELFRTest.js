@@ -46,7 +46,7 @@
 }
 */
 exports.operation0 = function (node,logger,manager) {
-var user = manager.getUserHome().getUserByID('ELFR')
+/*var user = manager.getUserHome().getUserByID('ELFR')
 
 user.getValues().toArray().forEach(function(v) {
 	logger.info(v.getAttribute().getID() + ' ' + v.getSimpleValue())	
@@ -55,5 +55,15 @@ user.getValues().toArray().forEach(function(v) {
 var method = user.getClass().getMethod('getLog')
 var res = method.invoke(user)
 logger.info(res)
+*/
 
+logger.info(node.getTitle())
+
+manager.executeInContext('Context1', function(m) {
+	var n = m.getObjectFromOtherManager(node)	
+	n.setName('aaaa')
+})
+logger.info(node.getTitle())
+
+throw new RuntimeException('adsfasdf')
 }
