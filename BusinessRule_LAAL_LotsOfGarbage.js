@@ -41,9 +41,11 @@
 */
 exports.operation0 = function (node,manager) {
 
-for (var i=0; i<100; i++) {
-	var attr = manager.getAttributeHome().getAttributeByID("Garbage-"+i);
+for (var i=1; i<=100; i++) {
+	var attrID = "Garbage-"+i;
+	var attr = manager.getAttributeHome().getAttributeByID(attrID);
 	logger.info(attr.getTitle());
+	node.setSimpleValue(attr, java.util.UUID.randomUUID().toString());
 }
 
 }
