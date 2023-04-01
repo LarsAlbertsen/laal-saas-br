@@ -40,15 +40,16 @@
 }
 */
 exports.operation0 = function (node,manager) {
-for (var r=0; r<100; r++) {
-	logger.info("r="+r);
-	for (var i=1; i<=100; i++) {
-		var attrID = "Garbage-"+i;
-		var attr = manager.getAttributeHome().getAttributeByID(attrID);
-		//logger.info(attr.getTitle());
-		node.setSimpleValue(attr, java.util.UUID.randomUUID().toString());
+for (var r=0; r<1000; r++) {
+	if (node.getRevisions().size()<100) {
+		//logger.info("r="+r);
+		for (var i=1; i<=100; i++) {
+			var attrID = "Garbage-"+i;
+			var attr = manager.getAttributeHome().getAttributeByID(attrID);
+			//logger.info(attr.getTitle());
+			node.setSimpleValue(attr, java.util.UUID.randomUUID().toString());
+		}
+		node.approve();
 	}
-	node.approve();
 }
-
 }
