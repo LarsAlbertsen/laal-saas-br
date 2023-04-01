@@ -41,7 +41,7 @@
 */
 exports.operation0 = function (node,manager) {
 for (var r=0; r<1000; r++) {
-	if (node.getRevisions().size()<100) {
+	if (node.getRevisions().size()<10) {
 		//logger.info("r="+r);
 		for (var i=1; i<=100; i++) {
 			var attrID = "Garbage-"+i;
