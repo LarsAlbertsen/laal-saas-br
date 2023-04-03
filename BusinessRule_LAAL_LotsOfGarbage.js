@@ -34,14 +34,25 @@
     "parameterClass" : "null",
     "value" : null,
     "description" : null
+  }, {
+    "contract" : "LoggerBindContract",
+    "alias" : "logger",
+    "parameterClass" : "null",
+    "value" : null,
+    "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node,manager) {
+exports.operation0 = function (node,manager,logger) {
+var numberOfRevisions = 50;
+
+var startTime = java.lang.System.currentTimeMillis();
+var revBefore = node.getRevisions().size();
+var count=0;
 for (var r=0; r<1000; r++) {
-	if (node.getRevisions().size()<50) {
+	if (node.getRevisions().size()<numberOfRevisions) {
 		//logger.info("r="+r);
 		for (var i=1; i<=100; i++) {
 			var attrID = "Garbage-"+i;
@@ -49,7 +60,13 @@ for (var r=0; r<1000; r++) {
 			//logger.info(attr.getTitle());
 			node.setSimpleValue(attr, java.util.UUID.randomUUID().toString());
 		}
+		count++;
 		node.approve();
 	}
 }
+if (count>0) {
+	var endTime = java.lang.System.currentTimeMillis();
+	logger.info("LotsOfGarbage ID="+node.getID()+" revBefore="+ revBefore + " revAfter="+ node.getRevisions().size()+   " revCreated="+count+ " time="+((endTime-startTime)/1000));
+}
+
 }
