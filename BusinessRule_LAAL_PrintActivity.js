@@ -44,7 +44,10 @@ logger.info("ff="+ff);
 var activityFiles = getFiles(curDir,"log");
 logger.info("logFiles="+activityFiles);
 
-
+var lastActivity = activityFiles.get(activityFiles.size()-1);
+logger.info("lastActivity="+lastActivity.getAbsolutePath().toString());
+var a = readFile(lastActivity, "UTF-8");
+logger.info(a);
 
 function getFiles(pDir, pSuffix) {
 	var rv = new java.util.ArrayList();
@@ -55,6 +58,13 @@ function getFiles(pDir, pSuffix) {
 		}
 	}
 	return rv;
+}
+
+function readFile(pFile, pEncoding) {
+	var pp = java.nio.file.Paths.get(pFile.getAbsolutePath());
+	var encoded = java.nio.file.Files.readAllBytes(pp);
+	var str = new java.lang.String(encoded, pEncoding);
+	return str;
 }
 
 }
