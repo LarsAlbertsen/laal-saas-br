@@ -46,7 +46,7 @@
 }
 */
 exports.operation0 = function (node,manager,logger) {
-var numberOfRevisions = 50;
+var numberOfRevisions = 30;
 
 var startTime = java.lang.System.currentTimeMillis();
 var revBefore = node.getRevisions().size();
