@@ -52,21 +52,27 @@
     "parameterClass" : "com.stibo.core.domain.impl.ClassificationProductLinkTypeImpl",
     "value" : "TestLink",
     "description" : null
+  }, {
+    "contract" : "AttributeBindContract",
+    "alias" : "TestClassificationKey",
+    "parameterClass" : "com.stibo.core.domain.impl.AttributeImpl",
+    "value" : "TestClassificationKey",
+    "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node,manager,ClassificationRoot,ClassificationObjType,TestLink) {
+exports.operation0 = function (node,manager,ClassificationRoot,ClassificationObjType,TestLink,TestClassificationKey) {
 var attributeCount = 10;
 var numberOfRevisions = 10;
 
 var startTime = java.lang.System.currentTimeMillis();
 var revBefore = node.getRevisions().size();
 var count=0;
-for (var r=0; r<1000; r++) {
+for (var r=0; r<10; r++) {
 	if (node.getRevisions().size()<numberOfRevisions) {
-		//logger.info("r="+r);
+		logger.info("r="+r);
 		for (var i=1; i<=attributeCount; i++) {
 			var attrID = "Garbage-"+i;
 			var attr = manager.getAttributeHome().getAttributeByID(attrID);
@@ -74,8 +80,8 @@ for (var r=0; r<1000; r++) {
 			node.setSimpleValue(attr, java.util.UUID.randomUUID().toString());
 		}
 		count++;
+		createLink(count, r);
 		node.approve();
-		createLink(count);
 	}
 }
 if (count>0) {
@@ -93,7 +99,9 @@ function createLink(currentNode, count) {
 	var target = keyHome.getObjectByKey("TestClassificationKey", classificationKey);
 	logger.info("Target "+target);
 	if (target==null) {
+		logger.info("CreateTarget");
 		target = ClassificationRoot.createClassification("", ClassificationObjType);
+		target.setSimpleValue(TestClassificationKey, classificationKey);
 	}
 	target.createClassificationProductLink(node, TestLink);
 }	
