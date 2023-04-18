@@ -70,8 +70,7 @@ var numberOfRevisions = 10;
 var startTime = java.lang.System.currentTimeMillis();
 var revBefore = node.getRevisions().size();
 var count=0;
-for (var r=0; r<10; r++) {
-	if (node.getRevisions().size()<numberOfRevisions) {
+for (var r=0; r<10 && r<node.getRevisions().size()<numberOfRevisions; r++) {
 		logger.info("r="+r);
 		for (var i=1; i<=attributeCount; i++) {
 			var attrID = "Garbage-"+i;
@@ -80,9 +79,8 @@ for (var r=0; r<10; r++) {
 			node.setSimpleValue(attr, java.util.UUID.randomUUID().toString());
 		}
 		count++;
-		createLink(count, r);
+		createLink(node, r);
 		node.approve();
-	}
 }
 if (count>0) {
 	var endTime = java.lang.System.currentTimeMillis();
@@ -90,6 +88,7 @@ if (count>0) {
 }
 
 function createLink(currentNode, count) {
+	logger.info("createLink "+count);
 	// Link Classification
 	var keyHome = manager.getKeyHome();
 	var myID = ""+node.getID();
@@ -97,13 +96,31 @@ function createLink(currentNode, count) {
 	var classificationKey = myID.substring(myID.length-2)+"-"+count;
 	logger.info("["+classificationKey+"]");
 	var target = keyHome.getObjectByKey("TestClassificationKey", classificationKey);
-	logger.info("Target "+target);
 	if (target==null) {
 		logger.info("CreateTarget");
 		target = ClassificationRoot.createClassification("", ClassificationObjType);
 		target.setSimpleValue(TestClassificationKey, classificationKey);
 	}
-	target.createClassificationProductLink(node, TestLink);
-}	
+	logger.info("Target "+target.getID());
+	// check if we are already referencing it
+	var foundExisting = false;
+	target.queryClassificationProductLinks().forEach(function(link) {
+		logger.info("checkLink "+link);
+		var product = link.getProduct();
+		logger.info("0 "+currentNode);
+		logger.info("1 "+currentNode.getID());
+		logger.info("2 "+product.getID());
+		if (product.getID().equals(currentNode.getID())) {
+			logger.info("found existing");
+			foundExisting = true;
+		}
+		return true;
+	});
+	if (!foundExisting) {
+		target.createClassificationProductLink(node, TestLink);
+	}	
+}
+
+
 
 }
