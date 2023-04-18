@@ -100,6 +100,7 @@ function createLink(currentNode, count) {
 		logger.info("CreateTarget");
 		target = ClassificationRoot.createClassification("", ClassificationObjType);
 		target.setSimpleValue(TestClassificationKey, classificationKey);
+		target.setName(classificationKey);
 	}
 	logger.info("Target "+target.getID());
 	// check if we are already referencing it
