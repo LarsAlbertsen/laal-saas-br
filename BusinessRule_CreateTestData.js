@@ -9,7 +9,7 @@
   "id" : "CreateTestData",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "CreateTestData",
+  "name" : "Create Test Data",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ "TestItem" ],
@@ -29,56 +29,39 @@
     "value" : null,
     "description" : null
   }, {
-    "contract" : "ReferenceTypeBindContract",
-    "alias" : "refType",
-    "parameterClass" : "com.stibo.core.domain.impl.ReferenceTypeImpl",
-    "value" : "Accessory",
-    "description" : null
-  }, {
-    "contract" : "AttributeBindContract",
-    "alias" : "ItemAttr",
-    "parameterClass" : "com.stibo.core.domain.impl.AttributeImpl",
-    "value" : "ItemAttr",
+    "contract" : "ManagerBindContract",
+    "alias" : "manager",
+    "parameterClass" : "null",
+    "value" : null,
     "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node,refType,ItemAttr) {
-//logger.info(node.getID());
+exports.operation0 = function (node,manager) {
+var attributeCount = 10;
+var numberOfRevisions = 10;
 
-var productCount = 100000;
-var revisionCount = 5;
-
-// maye sure we stop
-var tryCount = 0;
-
-while (node.getRevisions().size()<revisionCount && tryCount<100) {
-	node.setSimpleValue(ItemAttr, "Some Value "+Math.random());
-	node.approve();
-	tryCount++;
-	//logger.info("Size "+node.getRevisions().size() + " tryCount="+tryCount);
-}
-
-
-
-/*
-tryCount = 0;
-// create reference until we have at least 5
-var allRefs = node.getReferences(refType);
-while (allRefs.size()<5 && tryCount<100) {
-	var targetID = "LAAL-"+Math.floor(Math.random() * productCount);
-	//logger.info("TargetID="+target);
-	var target = node.getManager().getProductHome().getProductByID(targetID);
-	if (target!=null) {
-		logger.info("Create ref "+tryCount);
-		node.createReference(target, refType);
-		target.approve();
+var startTime = java.lang.System.currentTimeMillis();
+var revBefore = node.getRevisions().size();
+var count=0;
+for (var r=0; r<1000; r++) {
+	if (node.getRevisions().size()<numberOfRevisions) {
+		//logger.info("r="+r);
+		for (var i=1; i<=attributeCount; i++) {
+			var attrID = "Garbage-"+i;
+			var attr = manager.getAttributeHome().getAttributeByID(attrID);
+			//logger.info(attr.getTitle());
+			node.setSimpleValue(attr, java.util.UUID.randomUUID().toString());
+		}
+		count++;
+		node.approve();
 	}
-	allRefs = node.getReferences(refType);
-	tryCount++;
 }
-node.approve();
-*/
+if (count>0) {
+	var endTime = java.lang.System.currentTimeMillis();
+	logger.info("LotsOfGarbage ID="+node.getID()+" revBefore="+ revBefore + " revAfter="+ node.getRevisions().size()+   " revCreated="+count+ " time="+((endTime-startTime)/1000));
+}
+
 }
