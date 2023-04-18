@@ -34,12 +34,30 @@
     "parameterClass" : "null",
     "value" : null,
     "description" : null
+  }, {
+    "contract" : "ClassificationBindContract",
+    "alias" : "ClassificationRoot",
+    "parameterClass" : "com.stibo.core.domain.impl.FrontClassificationImpl",
+    "value" : "TestClassifications",
+    "description" : null
+  }, {
+    "contract" : "ObjectTypeBindContract",
+    "alias" : "ClassificationObjType",
+    "parameterClass" : "com.stibo.core.domain.impl.ObjectTypeImpl",
+    "value" : "TestClassification",
+    "description" : null
+  }, {
+    "contract" : "ClassificationProductLinkTypeBindContract",
+    "alias" : "TestLink",
+    "parameterClass" : "com.stibo.core.domain.impl.ClassificationProductLinkTypeImpl",
+    "value" : "TestLink",
+    "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node,manager) {
+exports.operation0 = function (node,manager,ClassificationRoot,ClassificationObjType,TestLink) {
 var attributeCount = 10;
 var numberOfRevisions = 10;
 
@@ -57,11 +75,27 @@ for (var r=0; r<1000; r++) {
 		}
 		count++;
 		node.approve();
+		createLink(count);
 	}
 }
 if (count>0) {
 	var endTime = java.lang.System.currentTimeMillis();
 	logger.info("LotsOfGarbage ID="+node.getID()+" revBefore="+ revBefore + " revAfter="+ node.getRevisions().size()+   " revCreated="+count+ " time="+((endTime-startTime)/1000));
 }
+
+function createLink(currentNode, count) {
+	// Link Classification
+	var keyHome = manager.getKeyHome();
+	var myID = ""+node.getID();
+	logger.info("["+myID+"]");
+	var classificationKey = myID.substring(myID.length-2)+"-"+count;
+	logger.info("["+classificationKey+"]");
+	var target = keyHome.getObjectByKey("TestClassificationKey", classificationKey);
+	logger.info("Target "+target);
+	if (target==null) {
+		target = ClassificationRoot.createClassification("", ClassificationObjType);
+	}
+	target.createClassificationProductLink(node, TestLink);
+}	
 
 }
