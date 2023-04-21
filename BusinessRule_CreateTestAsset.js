@@ -40,10 +40,13 @@
 }
 */
 exports.operation0 = function (node,assetType) {
-var n = 100;
+var createCount = 0;
+var n = 500;
 while (node.getAssets().size()<n) {
-	logger.info("Asset Count "+node.getAssets().size());
+	//logger.info("Asset Count "+node.getAssets().size());
 	node.createAsset("",assetType.getID());
+	createCount++;
 }
+logger.info("Created "+createCount+" assets");
 
 }
