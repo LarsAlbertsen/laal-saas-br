@@ -6,10 +6,10 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "CreateTestAssetsSubFolders",
+  "id" : "CreateTestAsset",
   "type" : "BusinessAction",
   "setupGroups" : [ "RecycleProject" ],
-  "name" : "CreateTestAssetsSubFolders",
+  "name" : "CreateTestAsset",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ "TestAssets" ],
