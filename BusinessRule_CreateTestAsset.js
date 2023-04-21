@@ -41,9 +41,9 @@
 */
 exports.operation0 = function (node,assetType) {
 var n = 100;
-while (rootNode.getChildren().size()<n) {
-	logger.info("Classification Count "+rootNode.getChildren().size());
-	rootNode.createAsset("",assetType.getID());
+while (node.getAssets().size()<n) {
+	logger.info("Classification Count "+node.getAssets().size());
+	node.createAsset("",assetType.getID());
 }
 
 }
