@@ -8,7 +8,7 @@
 {
   "id" : "CreateTestData",
   "type" : "BusinessAction",
-  "setupGroups" : [ "LAALBRGroup" ],
+  "setupGroups" : [ "TestBR" ],
   "name" : "Create Test Data",
   "description" : null,
   "scope" : "Global",
