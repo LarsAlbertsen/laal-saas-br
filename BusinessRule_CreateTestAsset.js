@@ -42,7 +42,7 @@
 exports.operation0 = function (node,assetType) {
 var n = 100;
 while (node.getAssets().size()<n) {
-	logger.info("Classification Count "+node.getAssets().size());
+	logger.info("Asset Count "+node.getAssets().size());
 	node.createAsset("",assetType.getID());
 }
 
