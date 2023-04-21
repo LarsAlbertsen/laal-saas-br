@@ -12,7 +12,7 @@
   "name" : "CreateTestAsset",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "TestAssets" ],
+  "validObjectTypes" : [ "TestAssetsSubFolder" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
@@ -23,27 +23,27 @@
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
   "binds" : [ {
-    "contract" : "ClassificationBindContract",
-    "alias" : "rootNode",
-    "parameterClass" : "com.stibo.core.domain.impl.FrontClassificationImpl",
-    "value" : "TestAssets",
+    "contract" : "CurrentObjectBindContract",
+    "alias" : "node",
+    "parameterClass" : "null",
+    "value" : null,
     "description" : null
   }, {
     "contract" : "ObjectTypeBindContract",
-    "alias" : "objType",
+    "alias" : "assetType",
     "parameterClass" : "com.stibo.core.domain.impl.ObjectTypeImpl",
-    "value" : "TestAssetsSubFolder",
+    "value" : "ProductImage",
     "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (rootNode,objType) {
+exports.operation0 = function (node,assetType) {
 var n = 100;
 while (rootNode.getChildren().size()<n) {
 	logger.info("Classification Count "+rootNode.getChildren().size());
-	rootNode.createClassification("",objType.getID());
+	rootNode.createAsset("",assetType.getID());
 }
 
 }
