@@ -40,7 +40,7 @@
 }
 */
 exports.operation0 = function (rootNode,objType) {
-var n = 100;
+var n = 1000;
 while (rootNode.getChildren().size()<n) {
 	logger.info("Classification Count "+rootNode.getChildren().size());
 	rootNode.createClassification("",objType.getID());
