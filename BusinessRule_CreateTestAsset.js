@@ -41,7 +41,7 @@
 */
 exports.operation0 = function (node,assetType) {
 var createCount = 0;
-var n = 10;
+var n = 1000;
 while (node.getAssets().size()<n) {
 	//logger.info("Asset Count "+node.getAssets().size());
 	node.createAsset("",assetType.getID());
