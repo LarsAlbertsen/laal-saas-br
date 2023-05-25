@@ -81,7 +81,7 @@ function handleNode(pNode) {
 		var dateString = dateFormat.format(now);
 
 
-		var userDateClassification2 = getUserClassification2(user, dateString);
+		var userDateClassification2 = getUserClassification2(user, now);
 
 		
 		var userDateClassification = getUserClassification(user, dateString);
@@ -132,17 +132,39 @@ function getUserClassification(pUser, pDateString) {
 //
 // get or create classification for the give user on the given date organized in data hierarchy
 //
-function getUserClassification2(pUser, pDateString) {
+function getUserClassification2(pUser, pNow) {
 	logger.info("getUserClassification2 user="+pUser+" data="+pDateString);
-	var id = "SystemChange "+pUser.getID()+" "+pDateString;
+	var id = "SystemChange2 "+pUser.getID()+" "+pDateString;
 	var root = step.getClassificationHome().getClassificationByID(id);
 	if (root==null) {
-		var dateRoot = getDateClassification(pDateString);
+		var dateRoot = getDateClassification2(pDateString);
 		root = dateRoot.createClassification(id, SystemChangeUserObjType.getID());
 		root.setName(pUser.getTitle());
 	}
 	return root;
 }
 
+function getUserClassification2(pUser, pNow) {
+	var id = "SystemChange2 "+pUser.getID()+" "+pNow;
+	var root = step.getClassificationHome().getClassificationByID(id);
+	if (root==null) {
+		logger.info("Did not find ["+id+"]");
+		var dateRoot = getDateClassification2(pNow);
+		//root = dateRoot.createClassification(id, SystemChangeUserObjType.getID());
+		//root.setName(pUser.getTitle());
+	}
+	return root;
+}
 
+function getDateClassification2(pNow) {
+	var id = "SystemChange2 "+ pNow;
+	var root = step.getClassificationHome().getClassificationByID(id);
+	if (root==null) {
+		logger.info("Did not find ["+id+"]");
+		//throw "Lars2";
+		//root = SystemChangesRoot.createClassification(id, SystemChangeDateObjType.getID());
+		//root.setName(pDateString);
+	}
+	return root;
+}
 }
