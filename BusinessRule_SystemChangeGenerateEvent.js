@@ -8,7 +8,7 @@
 {
   "id" : "SystemChangeGenerateEvent",
   "type" : "BusinessAction",
-  "setupGroups" : [ "LAALBRGroup" ],
+  "setupGroups" : [ "TrackChanges" ],
   "name" : "System Change Generate Event",
   "description" : null,
   "scope" : "Global",
@@ -93,7 +93,7 @@ function handleNode(pNode) {
 		c.setName(changeName);
 	}
 	else {
-		logger.info("SystemChangeGenerateEvent Nothing");
+		logger.info("SystemChangeGenerateEvent No Node");
 	}
 }
 
