@@ -80,6 +80,10 @@ function handleNode(pNode) {
 		var dateFormat = java.text.DateFormat.getDateInstance(java.text.DateFormat.DEFAULT, currentLocale);
 		var dateString = dateFormat.format(now);
 
+
+		var userDateClassification2 = getUserClassification2(user, dateString);
+
+		
 		var userDateClassification = getUserClassification(user, dateString);
 		var changeName = type+" ID="+id;
 		var existingChanges = userDateClassification.getChildren();
@@ -123,4 +127,22 @@ function getUserClassification(pUser, pDateString) {
 	}
 	return root;
 }
+
+
+//
+// get or create classification for the give user on the given date organized in data hierarchy
+//
+function getUserClassification2(pUser, pDateString) {
+	logger.info("getUserClassification2 user="+pUser+" data="+pDateString);
+	var id = "SystemChange "+pUser.getID()+" "+pDateString;
+	var root = step.getClassificationHome().getClassificationByID(id);
+	if (root==null) {
+		var dateRoot = getDateClassification(pDateString);
+		root = dateRoot.createClassification(id, SystemChangeUserObjType.getID());
+		root.setName(pUser.getTitle());
+	}
+	return root;
+}
+
+
 }
