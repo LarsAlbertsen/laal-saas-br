@@ -58,12 +58,24 @@
     "parameterClass" : "com.stibo.core.domain.impl.ObjectTypeImpl",
     "value" : "SystemChangeUser",
     "description" : null
+  }, {
+    "contract" : "ObjectTypeBindContract",
+    "alias" : "SystemChangeYearObjType",
+    "parameterClass" : "com.stibo.core.domain.impl.ObjectTypeImpl",
+    "value" : "SystemChangeYear",
+    "description" : null
+  }, {
+    "contract" : "ObjectTypeBindContract",
+    "alias" : "SystemChangeMonthObjType",
+    "parameterClass" : "com.stibo.core.domain.impl.ObjectTypeImpl",
+    "value" : "SystemChangeMonth",
+    "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node,step,SystemChangesRoot,SystemChangeObjType,SystemChangeDateObjType,SystemChangeUserObjType) {
+exports.operation0 = function (node,step,SystemChangesRoot,SystemChangeObjType,SystemChangeDateObjType,SystemChangeUserObjType,SystemChangeYearObjType,SystemChangeMonthObjType) {
 
 handleNode(node);
 
@@ -81,10 +93,10 @@ function handleNode(pNode) {
 		var dateString = dateFormat.format(now);
 
 
-		var userDateClassification2 = getUserClassification2(user, now);
+		var userDateClassification = getUserClassification2(user, now);
 
 		
-		var userDateClassification = getUserClassification(user, dateString);
+		//var userDateClassification = getUserClassification(user, dateString);
 		var changeName = type+" ID="+id;
 		var existingChanges = userDateClassification.getChildren();
 		for (var i=0; i<existingChanges.size(); i++) {
@@ -132,7 +144,7 @@ function getUserClassification(pUser, pDateString) {
 //
 // get or create classification for the give user on the given date organized in data hierarchy
 //
-function getUserClassification2(pUser, pNow) {
+/*function getUserClassification2(pUser, pNow) {
 	logger.info("getUserClassification2 user="+pUser+" data="+pDateString);
 	var id = "SystemChange2 "+pUser.getID()+" "+pDateString;
 	var root = step.getClassificationHome().getClassificationByID(id);
@@ -142,29 +154,67 @@ function getUserClassification2(pUser, pNow) {
 		root.setName(pUser.getTitle());
 	}
 	return root;
-}
+}*/
 
 function getUserClassification2(pUser, pNow) {
-	var id = "SystemChange2 "+pUser.getID()+" "+pNow;
-	var root = step.getClassificationHome().getClassificationByID(id);
-	if (root==null) {
-		logger.info("Did not find ["+id+"]");
-		var dateRoot = getDateClassification2(pNow);
-		//root = dateRoot.createClassification(id, SystemChangeUserObjType.getID());
-		//root.setName(pUser.getTitle());
+	var formatter = new java.text.SimpleDateFormat("yyyy/MM/dd");  
+	var dateString = formatter.format(pNow);
+
+	var id = "SystemChange "+dateString+"/"+pUser.getID();
+	var userCls = step.getClassificationHome().getClassificationByID(id);
+	if (userCls==null) {
+		logger.info("Did not userCls ["+id+"]");
+		var dateCls = getDateClassification2(pNow);
+		userCls = dateCls.createClassification(id, SystemChangeUserObjType.getID());
+		userCls.setName(pUser.getTitle());
 	}
-	return root;
+	return userCls;
 }
 
 function getDateClassification2(pNow) {
-	var id = "SystemChange2 "+ pNow;
-	var root = step.getClassificationHome().getClassificationByID(id);
-	if (root==null) {
-		logger.info("Did not find ["+id+"]");
-		//throw "Lars2";
-		//root = SystemChangesRoot.createClassification(id, SystemChangeDateObjType.getID());
-		//root.setName(pDateString);
+	//var formatter = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+	var formatter = new java.text.SimpleDateFormat("yyyy/MM/dd");  
+	var dateString = formatter.format(pNow);
+
+	var id = "SystemChange "+ dateString;
+	var dateCls = step.getClassificationHome().getClassificationByID(id);
+	if (dateCls==null) {
+		logger.info("create date ["+id+"]");
+		var monthCls = getMonthClassification2(pNow);
+		dateCls = monthCls.createClassification(id, SystemChangeDateObjType.getID());
+		dateCls.setName(dateString);
 	}
-	return root;
+	return dateCls;
+}
+
+function getMonthClassification2(pNow) {
+	//var formatter = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+	var formatter = new java.text.SimpleDateFormat("yyyy/MM");  
+	var dateString = formatter.format(pNow);
+
+	var id = "SystemChange "+ dateString;
+	var monthCls = step.getClassificationHome().getClassificationByID(id);
+	if (monthCls==null) {
+		logger.info("create month ["+id+"]");
+		var yearCls = getYearClassification2(pNow);
+		monthCls = yearCls.createClassification(id, SystemChangeMonthObjType.getID());
+		monthCls.setName(dateString);
+	}
+	return monthCls;
+}
+
+function getYearClassification2(pNow) {
+	//var formatter = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+	var formatter = new java.text.SimpleDateFormat("yyyy");  
+	var dateString = formatter.format(pNow);
+
+	var id = "SystemChange "+ dateString;
+	var yearCls = step.getClassificationHome().getClassificationByID(id);
+	if (yearCls==null) {
+		logger.info("Create year "+id);
+		yearCls = SystemChangesRoot.createClassification(id, SystemChangeYearObjType.getID());
+		yearCls.setName(dateString);
+	}
+	return yearCls;
 }
 }
