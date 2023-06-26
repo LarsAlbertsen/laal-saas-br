@@ -45,4 +45,13 @@ if (asset.getClassifications().size()<2) {
 	asset.addClassification(assetCls);
 }
 
+var allCls = asset.getClassifications().toArray();
+for (var i=0; i<allCls.length; i++) {
+	var aCls = allCls[i];
+	if (!aCls.getID().equals(assetCls.getID())) {
+		asset.removeClassification(aCls);
+	}
+}
+asset.approve();
+
 }
