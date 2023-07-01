@@ -12,7 +12,7 @@
   "name" : "LAAL_Delete",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Item", "ProductImage" ],
+  "validObjectTypes" : [ "Item", "MyEntity", "ProductImage" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
