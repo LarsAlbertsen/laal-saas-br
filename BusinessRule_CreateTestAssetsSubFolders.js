@@ -25,8 +25,8 @@
   "binds" : [ {
     "contract" : "ClassificationBindContract",
     "alias" : "rootNode",
-    "parameterClass" : "null",
-    "value" : null,
+    "parameterClass" : "com.stibo.core.domain.impl.FrontClassificationImpl",
+    "value" : "TestAssets",
     "description" : null
   }, {
     "contract" : "ObjectTypeBindContract",

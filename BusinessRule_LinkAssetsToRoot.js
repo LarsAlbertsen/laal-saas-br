@@ -31,8 +31,8 @@
   }, {
     "contract" : "ClassificationBindContract",
     "alias" : "assetCls",
-    "parameterClass" : "null",
-    "value" : null,
+    "parameterClass" : "com.stibo.core.domain.impl.FrontClassificationImpl",
+    "value" : "TestAssets",
     "description" : null
   } ],
   "messages" : [ ],
