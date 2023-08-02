@@ -6,10 +6,10 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "RefreshProfilingData",
+  "id" : "LAAL_GetLogs",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "RefreshProfilingData",
+  "name" : "LAAL_GetLogs",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ "Product user-type root" ],
@@ -36,21 +36,21 @@
     "description" : null
   }, {
     "contract" : "ClassificationBindContract",
-    "alias" : "profilingRoot",
+    "alias" : "logFileRoot",
     "parameterClass" : "com.stibo.core.domain.impl.FrontClassificationImpl",
-    "value" : "Profilings",
+    "value" : "LogFiles",
     "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (manager,assetType,profilingRoot) {
+exports.operation0 = function (manager,assetType,logFileRoot) {
 var profilingDir = new java.io.File("/opt/stibo/step/diag/logs");
 var maxCount = 1000;
 var count = 0;
 var foundFiles = 0;
-var doUpload = false;
+var doUpload = true;
 var totalFileSize = 0;
 var skipped = 0;
 
@@ -79,29 +79,24 @@ function getFiles(pDir) {
 function getFile(pFile) {
 	logger.info("Getting file from "+pFile.getAbsolutePath());
 	var id = pFile.getName();
-	if (!id.endsWith("-auto-prof.zip")) {
-		return;
-	}
 	foundFiles++;
 	totalFileSize += pFile.length();
 	
-	id = id.replace("-auto-prof.zip", "");
-
 	if (count>=maxCount) {
 		skipped++;
 		return;
 	}
 
 	if (!doUpload) {
-		//logger.info("Was going to upload "+id);
+		logger.info("Was going to upload "+id);
 		skipped++;
 		return;
 	}
 
 	var asset = manager.getAssetHome().getAssetByID(id);
 	if (asset==null) {
-		//logger.info("Create asset ID="+id);
-		asset = profilingRoot.createAsset(id, assetType);
+		logger.info("Create asset ID="+id);
+		asset = logFileRoot.createAsset(id, assetType);
 		asset.setName(id);
 		copyFileToAsset(pFile, asset);
 		count++;
@@ -111,7 +106,7 @@ function getFile(pFile) {
 }
 
 function copyFileToAsset(pFile, pAsset) {
-	//logger.info("Uploading data from file "+pFile.getAbsolutePath());
+	logger.info("Uploading data from file "+pFile.getAbsolutePath());
 	var is = new java.io.FileInputStream(pFile);
 	pAsset.upload(is, pFile.getName());
 	is.close();
