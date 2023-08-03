@@ -37,8 +37,8 @@
   }, {
     "contract" : "SimpleValueBindContract",
     "alias" : "bullet01V",
-    "parameterClass" : "com.stibo.core.domain.impl.AttributeImpl",
-    "value" : "3b8d7d7e-9ff9-4b2b-99ca-57a1ba19eb94",
+    "parameterClass" : "null",
+    "value" : null,
     "description" : null
   }, {
     "contract" : "CurrentObjectBindContract",
@@ -49,8 +49,8 @@
   }, {
     "contract" : "SimpleValueBindContract",
     "alias" : "bullet02V",
-    "parameterClass" : "com.stibo.core.domain.impl.AttributeImpl",
-    "value" : "15271107-6854-40a9-bcd6-b320407d8544",
+    "parameterClass" : "null",
+    "value" : null,
     "description" : null
   }, {
     "contract" : "MandatoryContextBind",
