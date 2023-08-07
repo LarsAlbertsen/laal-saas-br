@@ -12,7 +12,7 @@
   "name" : "LAAL_DeleteAndApprove",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Item", "ProductImage" ],
+  "validObjectTypes" : [ "Asset user-type root", "AutoClassificationRuleSet", "BusinessRuleExample", "Configuration", "DEFAULT", "Icon", "Illustration", "InstallationManual", "Item", "JPEGImage", "Logo", "MSDS", "OwnersManual", "PDF", "ProductImage", "ProductVideo", "Swatch", "XML", "stibo.BulkUpdateConfig", "stibo.ExportManagerConfig", "stibo.ImageConversionConfig", "stibo.ImportManagerConfig", "stibo.TranslationConfig", "stibo.ValueSubstitutionTransConfig" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
