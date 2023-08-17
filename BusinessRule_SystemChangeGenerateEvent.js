@@ -14,7 +14,7 @@
   "scope" : "Global",
   "validObjectTypes" : [ ],
   "allObjectTypesValid" : true,
-  "runPrivileged" : false,
+  "runPrivileged" : true,
   "onApprove" : "Never",
   "dependencies" : [ ]
 }
