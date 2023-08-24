@@ -34,5 +34,5 @@
 }
 */
 exports.operation0 = function (node) {
-return 'sdf'
+return true;
 }
