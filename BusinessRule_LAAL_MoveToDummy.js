@@ -31,8 +31,8 @@
   }, {
     "contract" : "ProductBindContract",
     "alias" : "newParent",
-    "parameterClass" : "com.stibo.core.domain.impl.FrontProductImpl",
-    "value" : "Dummy",
+    "parameterClass" : "null",
+    "value" : null,
     "description" : null
   } ],
   "messages" : [ ],
