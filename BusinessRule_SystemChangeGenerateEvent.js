@@ -179,10 +179,11 @@ function getDateClassification2(pNow) {
 	var id = "SystemChange "+ dateString;
 	var dateCls = step.getClassificationHome().getClassificationByID(id);
 	if (dateCls==null) {
-		logger.info("create date ["+id+"]");
+		logger.info("Create date ["+id+"]");
 		var monthCls = getMonthClassification2(pNow);
 		dateCls = monthCls.createClassification(id, SystemChangeDateObjType.getID());
 		dateCls.setName(dateString);
+		logger.info("Created day");
 	}
 	return dateCls;
 }
@@ -195,10 +196,12 @@ function getMonthClassification2(pNow) {
 	var id = "SystemChange "+ dateString;
 	var monthCls = step.getClassificationHome().getClassificationByID(id);
 	if (monthCls==null) {
-		logger.info("create month ["+id+"]");
+		logger.info("Create month ["+id+"]");
 		var yearCls = getYearClassification2(pNow);
+		logger.info("Got year - creating ["+id+"]");
 		monthCls = yearCls.createClassification(id, SystemChangeMonthObjType.getID());
 		monthCls.setName(dateString);
+		logger.info("Create month");
 	}
 	return monthCls;
 }
@@ -209,11 +212,14 @@ function getYearClassification2(pNow) {
 	var dateString = formatter.format(pNow);
 
 	var id = "SystemChange "+ dateString;
+	logger.info("Look for ["+id+"]");
 	var yearCls = step.getClassificationHome().getClassificationByID(id);
+	logger.info("Found "+yearCls);
 	if (yearCls==null) {
-		logger.info("Create year "+id);
+		logger.info("Create year ["+id+"] below ["+SystemChangesRoot.getID()+"]");
 		yearCls = SystemChangesRoot.createClassification(id, SystemChangeYearObjType.getID());
 		yearCls.setName(dateString);
+		logger.info("Created year");
 	}
 	return yearCls;
 }
