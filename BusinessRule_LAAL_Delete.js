@@ -34,6 +34,7 @@
 }
 */
 exports.operation0 = function (node) {
+// Documentation is added in second version
 if (node!=null) {
 	node.delete();
 }
