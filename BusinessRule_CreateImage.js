@@ -47,17 +47,21 @@ logger.info("Asset saved to "+file);
 var newAsset = manager.getClassificationHome().getClassificationByID("AssetsRoot").createAsset("", "JPEGImage");
 logger.info("New asset "+newAsset.getID());
 var inFile = new java.io.FileInputStream(file);
+// upload content -- second param gives Filename property on asset
 newAsset.upload(inFile, asset.getName()+".jpg");
 newAsset.setName(asset.getName());
+// Cleanup - Remember to delete if we use files.
 inFile.close();
 file.delete();
 
 
 
 function saveToFile(pAsset) {
+	// Create tmp file -- can use ByteArrayOutputStream if it's small to avoid files
 	var tmpFile = java.io.File.createTempFile(pAsset.getID(), ".pdf");
 	var outFile = new java.io.FileOutputStream(tmpFile);
-	pAsset.download(outFile, "BigPDF");
+	// Download content using my image conversion 
+	pAsset.download(outFile, "MyLargeThumb");
 	outFile.close();
 	return tmpFile;
 }
