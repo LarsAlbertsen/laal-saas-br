@@ -80,7 +80,6 @@ if (node!=null) {
 	}
 }
 
-
 function handleNode(pNode) {
 	if (pNode!=null) {
 		var url = pNode.getURL();
@@ -120,7 +119,6 @@ function handleNode(pNode) {
 //
 // get or create classification for the give user on the given date organized in data hierarchy
 //
-
 function getUserClassification2(pConfigRoot, pUser, pNow) {
 	var formatter = new java.text.SimpleDateFormat("yyyy/MM/dd");  
 	var dateString = formatter.format(pNow);
@@ -128,7 +126,7 @@ function getUserClassification2(pConfigRoot, pUser, pNow) {
 	var id = "SystemChange "+dateString+"/"+pUser.getID();
 	var userCls = pConfigRoot.getManager().getClassificationHome().getClassificationByID(id);
 	if (userCls==null) {
-		logger.info("Did not userCls ["+id+"]");
+		//logger.info("Did not userCls ["+id+"]");
 		var dateCls = getDateClassification2(pConfigRoot, pNow);
 		userCls = dateCls.createClassification(id, SystemChangeUserObjType.getID());
 		userCls.setName(pUser.getTitle());
