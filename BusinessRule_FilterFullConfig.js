@@ -1,15 +1,15 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
 {
-  "id" : "PreProcessor",
+  "id" : "FilterFullConfig",
   "type" : "BusinessAction",
-  "setupGroups" : [ "ChangePackagesConditions" ],
-  "name" : "PreProcessor",
+  "setupGroups" : [ "LAALBRGroup" ],
+  "name" : "FilterFullConfig",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
@@ -23,12 +23,6 @@
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
   "binds" : [ {
-    "contract" : "ManagerBindContract",
-    "alias" : "manager",
-    "parameterClass" : "null",
-    "value" : null,
-    "description" : null
-  }, {
     "contract" : "CurrentEventBatchBinding",
     "alias" : "batch",
     "parameterClass" : "null",
@@ -39,7 +33,7 @@
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (manager,batch) {
+exports.operation0 = function (batch) {
 var doInclude = false;
 var events = batch.getEvents();
 logger.info("PreProcessor events="+events.size());

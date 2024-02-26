@@ -1,15 +1,15 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
 {
-  "id" : "LOVCrossValidation",
+  "id" : "StopApprove",
   "type" : "BusinessCondition",
-  "setupGroups" : [ "Conditions" ],
-  "name" : "LOVCrossValidation",
+  "setupGroups" : [ "ApproveActions" ],
+  "name" : "StopApprove",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],

@@ -6,20 +6,17 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "LAAL_SetName",
+  "id" : "LAALAuditAction",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "LAAL_SetName",
+  "name" : "Audit Action",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Item", "Variant" ],
-  "allObjectTypesValid" : false,
+  "validObjectTypes" : [ ],
+  "allObjectTypesValid" : true,
   "runPrivileged" : false,
   "onApprove" : "Never",
-  "dependencies" : [ {
-    "libraryId" : "myLib",
-    "libraryAlias" : "lib"
-  } ]
+  "dependencies" : [ ]
 }
 */
 /*===== business rule plugin definition =====
@@ -32,8 +29,8 @@
     "value" : null,
     "description" : null
   }, {
-    "contract" : "DataIssuesContextBind",
-    "alias" : "message",
+    "contract" : "CurrentTransitionBindContract",
+    "alias" : "transition",
     "parameterClass" : "null",
     "value" : null,
     "description" : null
@@ -42,20 +39,18 @@
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node,message,lib) {
-/** 
- *  This is a comment *
- */
-var name = node.getName();
-logger.info("name="+name);
-name = "X "+name;
-node.setName(name);
-logger.info("Xname="+name);
+exports.operation0 = function (node,transition) {
+logger.info("auditObject "+node + " transition "+transition);
 
-// Hello World
 
-var x = lib.test();
+var msg = transition.getMessage();
+var event = transition.getEvent();
+var source = transition.getSource();
+var target = transition.getTarget();
 
-message.addError("Hello ["+name+"]", node);
-return message;
+logger.info("auditObject msg="+msg);
+logger.info("auditObject event="+event);
+logger.info("auditObject source="+source);
+logger.info("auditObject target="+target);
+
 }

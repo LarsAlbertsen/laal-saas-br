@@ -1,15 +1,15 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
 {
-  "id" : "MyGenerateEvent",
+  "id" : "ChangePackageTest2",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "MyGenerateEvent",
+  "name" : "ChangePackageTest2",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
@@ -22,11 +22,21 @@
 /*===== business rule plugin definition =====
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
-  "binds" : [ ],
+  "binds" : [ {
+    "contract" : "ManagerBindContract",
+    "alias" : "manager",
+    "parameterClass" : "null",
+    "value" : null,
+    "description" : null
+  } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function () {
-logger.info("MyGenerateEvent");
+exports.operation0 = function (manager) {
+
+var aNode = manager.getNodeFromURL("step://SetupGroup?contextid=Context1&id=CPFeatures&workspaceid=Main");
+logger.info("aNode "+aNode);
+
+
 }

@@ -1,7 +1,7 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
@@ -37,8 +37,8 @@
   }, {
     "contract" : "AttributeBindContract",
     "alias" : "ItemAttr",
-    "parameterClass" : "com.stibo.core.domain.impl.AttributeImpl",
-    "value" : "ItemAttr",
+    "parameterClass" : "null",
+    "value" : null,
     "description" : null
   } ],
   "messages" : [ ],

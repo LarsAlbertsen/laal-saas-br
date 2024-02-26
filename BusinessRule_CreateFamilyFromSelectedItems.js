@@ -1,7 +1,7 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
@@ -126,4 +126,5 @@ if (newName.length>0) {
 		selection.get(i).setObjectType(VariantObjType);
 	}
 }
+
 }

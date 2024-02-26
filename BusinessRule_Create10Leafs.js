@@ -1,7 +1,7 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
@@ -40,4 +40,5 @@ if (children==null || children.size()==0) {
 		node.createProduct("","Tree");
 	}
 }
+
 }

@@ -1,7 +1,7 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
@@ -35,12 +35,10 @@
 */
 exports.operation0 = function (node) {
 var children = node.getChildren();
-if (children==null || children.size()>10) {
-	logger.info("Fix Children on "+node.getID());
+if (children==null || children.size()==0) {
+	logger.info("No Children on "+node.getID());
 	for (var i=0; i<10; i++) {
-		if (node.getChildren().size()<10) {
-			node.createProduct("","Item");
-		}
+		node.createProduct("","Item");
 	}
 }
 

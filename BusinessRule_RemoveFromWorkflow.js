@@ -1,7 +1,7 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
@@ -40,6 +40,8 @@
 }
 */
 exports.operation0 = function (node,manager) {
+
+
 /*
 var approvedDescription = manager.executeInWorkspace("Approved", function(approvedManager) {
 	logger.info("approvedManager="+approvedManager);
@@ -83,4 +85,5 @@ manager.executeWritePrivileged(function(privilegedManager) {
 	}
 );
 */
+
 }

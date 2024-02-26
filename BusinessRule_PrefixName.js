@@ -1,7 +1,7 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
@@ -40,4 +40,6 @@ if (curName==null) {
 }
 var newName = "Prefix "+curName;
 node.setName(newName);
+
+
 }

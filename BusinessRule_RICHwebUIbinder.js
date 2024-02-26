@@ -1,15 +1,15 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
 {
-  "id" : "Q",
+  "id" : "RICHwebUIbinder",
   "type" : "BusinessAction",
-  "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "Q",
+  "setupGroups" : [ "RICHBRGroup" ],
+  "name" : "RICHwebUIbinder",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],

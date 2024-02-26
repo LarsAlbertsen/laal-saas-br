@@ -1,18 +1,18 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
 {
-  "id" : "DeleteApprove",
+  "id" : "UpdateNameFromID",
   "type" : "BusinessAction",
-  "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "DeleteApprove",
+  "setupGroups" : [ "TestBR" ],
+  "name" : "UpdateNameFromID",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Item" ],
+  "validObjectTypes" : [ "TestItem", "Tree" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
@@ -34,5 +34,5 @@
 }
 */
 exports.operation0 = function (node) {
-node.delete();//.approve();
+node.setName(node.getID());
 }

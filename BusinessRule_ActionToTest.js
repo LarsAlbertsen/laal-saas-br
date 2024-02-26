@@ -1,7 +1,7 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
@@ -47,4 +47,5 @@ if (attribute == null) {
 }
 var value = node.getValue(attribute.getID());
 value.setSimpleValue("100");
+
 }

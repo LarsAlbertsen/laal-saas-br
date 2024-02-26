@@ -1,15 +1,15 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
 {
-  "id" : "LAALTestCondition",
+  "id" : "CheckChangePackage",
   "type" : "BusinessCondition",
-  "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "LAAL Test Condition",
+  "setupGroups" : [ "Actions" ],
+  "name" : "CheckChangePackage",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
@@ -23,23 +23,11 @@
 {
   "pluginId" : "JavaScriptBusinessConditionWithBinds",
   "binds" : [ ],
-  "messages" : [ {
-    "variable" : "MyMessage",
-    "message" : "Hello",
-    "translations" : [ {
-      "language" : "da",
-      "message" : "Hej Med Dig"
-    }, {
-      "language" : "de",
-      "message" : "German Version"
-    } ]
-  } ],
+  "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (MyMessage) {
-var msg = new MyMessage();
+exports.operation0 = function () {
+throw "STOP IT!";
 
-
-return msg;
 }

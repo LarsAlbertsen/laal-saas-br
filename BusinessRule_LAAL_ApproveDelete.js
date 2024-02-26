@@ -1,15 +1,15 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
 {
-  "id" : "InspectWorkflow",
+  "id" : "LAAL_ApproveDelete",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "InspectWorkflow",
+  "name" : "LAAL_ApproveDelete",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
@@ -35,22 +35,21 @@
 */
 exports.operation0 = function (manager) {
 
-var wf = manager.getWorkflowHome().getWorkflowByID("CreateItem")
-logger.info("WF "+wf);
-
-wf.getStates().toArray().forEach(
-	function(state) {
-		logger.info("STATE "+state);
-		if (state instanceof com.stibo.core.domain.state.State) {
-			logger.info("  isStateFlowFinal "+state.isStateFlowFinal());
-			logger.info("  isInitial "+state.isInitial());
-			logger.info("  isFinal "+state.isFinal());
-			logger.info("  isParallel "+state.isParallel())
+var p1 = manager.getProductHome().getProductByID("24050308");
+logger.info("p1="+p1);
+if (p1!=null) {
+	logger.info("delete p1");
+	var p2 = p1.delete()
+	logger.info("p2="+p2);
+	/*if (p2!=null) {
+		logger.info("approve p2");
+		var p3 = p2.approve();
+		if (p3!=null) {
+			logger.info("p3="+p3);
 		}
-	}
-);
+	}*/
+}
 
 
 
-//.toArray().forEach(function(v)
 }

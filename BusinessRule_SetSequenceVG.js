@@ -1,7 +1,7 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
@@ -29,7 +29,7 @@
   }, {
     "id" : "ValueGeneratorConfiguration",
     "type" : "com.stibo.valuegenerator.domain.configuration.ValueGeneratorConfiguration",
-    "value" : null
+    "value" : "SequenceVG"
   } ],
   "pluginType" : "Operation"
 }

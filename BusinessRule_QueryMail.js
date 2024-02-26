@@ -6,10 +6,10 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "ELFRDelete",
+  "id" : "QueryMail",
   "type" : "BusinessAction",
-  "setupGroups" : [ "ELFRBRGroup" ],
-  "name" : "ELFRDelete",
+  "setupGroups" : [ "LAALBRGroup" ],
+  "name" : "QueryMail",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
@@ -23,20 +23,14 @@
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
   "binds" : [ {
-    "contract" : "LoggerBindContract",
-    "alias" : "logger",
-    "parameterClass" : "null",
-    "value" : null,
-    "description" : null
-  }, {
     "contract" : "ManagerBindContract",
     "alias" : "manager",
     "parameterClass" : "null",
     "value" : null,
     "description" : null
   }, {
-    "contract" : "CurrentObjectBindContract",
-    "alias" : "node",
+    "contract" : "QueryHomeBindContract",
+    "alias" : "qh",
     "parameterClass" : "null",
     "value" : null,
     "description" : null
@@ -45,10 +39,16 @@
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (logger,manager,node) {
-var x = node.delete()
-x.approve()
-//x.delete()
-logger.info(x)
+exports.operation0 = function (manager,qh) {
+var workflow = manager.getWorkflowHome().getWorkflowByID("CreateItem");
+var supplierEnrichState = workflow.getStateByID("Enrich");
+var c = com.stibo.query.condition.Conditions;
+var querySpecification = qh.queryWorkflowTasks().where (
+	c.workflow().eq(workflow)
+	.and(c.state().eq(supplierEnrichState))
+);
+
+// Execute Query and create an email message with simple HTML table for items.
+var query = querySpecification.execute();
 
 }

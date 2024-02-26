@@ -1,18 +1,18 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
 {
-  "id" : "LAAL_ShowUnapprovedPO",
+  "id" : "LAAL_DeleteAndApprove",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "LAAL_ShowUnapprovedPO",
+  "name" : "LAAL_DeleteAndApprove",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Item" ],
+  "validObjectTypes" : [ "Asset user-type root", "AutoClassificationRuleSet", "BusinessRuleExample", "Configuration", "DEFAULT", "Icon", "Illustration", "InstallationManual", "Item", "JPEGImage", "Logo", "MSDS", "OwnersManual", "PDF", "ProductImage", "ProductVideo", "Swatch", "XML", "stibo.BulkUpdateConfig", "stibo.ExportManagerConfig", "stibo.ImageConversionConfig", "stibo.ImportManagerConfig", "stibo.TranslationConfig", "stibo.ValueSubstitutionTransConfig" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
@@ -34,10 +34,8 @@
 }
 */
 exports.operation0 = function (node) {
-var po = node.getNonApprovedObjects();
-logger.info("unapproved="+po);
-var foo = node.approve();
-logger.info("foo="+foo);
-var po2 = node.getNonApprovedObjects();
-logger.info("unapproved2="+po2);
+if (node!=null) {
+	node.delete().approve();
+}
+
 }

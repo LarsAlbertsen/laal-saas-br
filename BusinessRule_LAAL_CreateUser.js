@@ -1,7 +1,7 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
@@ -48,4 +48,6 @@ var stiboGroup = manager.getGroupHome().getGroupByID("Stibo");
 var newUser = stiboGroup.createUser("NewUser2", "Hello","laal@stibosystems.com");
 
 newUser.setName("My New User");
+
+
 }

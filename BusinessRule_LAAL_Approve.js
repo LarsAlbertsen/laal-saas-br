@@ -1,19 +1,19 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
 {
-  "id" : "ListValidatorNames",
+  "id" : "LAAL_Approve",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
-  "name" : "ListValidatorNames",
+  "setupGroups" : [ "LAALBRGroup" ],
+  "name" : "LAAL_Approve",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Family", "Item", "Variant" ],
-  "allObjectTypesValid" : false,
+  "validObjectTypes" : [ ],
+  "allObjectTypesValid" : true,
   "runPrivileged" : false,
   "onApprove" : "Never",
   "dependencies" : [ ]
@@ -34,19 +34,6 @@
 }
 */
 exports.operation0 = function (node) {
-var allValues = node.getValues().toArray();
-
-for (var i=0; i<allValues.length; i++) {
-	var aValue = allValues[i];
-	try {
-		var a = aValue.getAttribute();
-		var m1 = a.getClass().getMethod("getValidatorName");
-		var validatorName = m1.invoke(a);
-
-		logger.info(aValue.getAttribute().getTitle()+"="+validatorName);
-	} catch (e) {
-		logger.info("ERROR " +e);
-	}
-}
+node.approve();
 
 }

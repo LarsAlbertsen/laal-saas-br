@@ -1,19 +1,19 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
 {
-  "id" : "IncludeInSTEPConfigCP",
-  "type" : "BusinessCondition",
+  "id" : "LAAL_MyAction",
+  "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "IncludeInSTEPConfigCP",
+  "name" : "LAAL_MyAction",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ ],
-  "allObjectTypesValid" : true,
+  "validObjectTypes" : [ "TestItem" ],
+  "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
   "dependencies" : [ ]
@@ -21,7 +21,7 @@
 */
 /*===== business rule plugin definition =====
 {
-  "pluginId" : "JavaScriptBusinessConditionWithBinds",
+  "pluginId" : "JavaScriptBusinessActionWithBinds",
   "binds" : [ {
     "contract" : "CurrentObjectBindContract",
     "alias" : "node",
@@ -34,8 +34,5 @@
 }
 */
 exports.operation0 = function (node) {
-logger.info("IncludeInSTEPConfigCP "+node);
-
-return false;
-
+node.delete();
 }

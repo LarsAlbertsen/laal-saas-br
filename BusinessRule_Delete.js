@@ -1,18 +1,18 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
 {
-  "id" : "LongRunningBR",
+  "id" : "Delete",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "LongRunningBR",
+  "name" : "LAAL_Delete(2)",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Product user-type root" ],
+  "validObjectTypes" : [ "Item", "MyEntity", "ProductImage", "TestItem" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
@@ -34,16 +34,8 @@
 }
 */
 exports.operation0 = function (node) {
-var minutes = 20;
-
-for (var i=0; i<minutes; i++) {
-	node.setName("LONGRUNNING "+i);
-	for (var j=0; j<60; j++) {
-		logger.info("LONGRUNNING "+i+"/"+j);
-		java.lang.Thread.sleep(1000);
-		node.setName("LONGRUNNING "+i);
-	}
+if (node!=null) {
+	node.delete();
 }
 
-logger.info("LONGRUNNING done after "+minutes+" minutes");
 }

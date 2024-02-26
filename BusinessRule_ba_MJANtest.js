@@ -1,20 +1,20 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
 {
-  "id" : "LAAL_setEmail",
+  "id" : "ba_MJANtest",
   "type" : "BusinessAction",
-  "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "LAAL_setEmail",
+  "setupGroups" : [ "Actions" ],
+  "name" : "ba_MJANtest",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
   "allObjectTypesValid" : true,
-  "runPrivileged" : false,
+  "runPrivileged" : true,
   "onApprove" : "Never",
   "dependencies" : [ ]
 }
@@ -23,19 +23,17 @@
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
   "binds" : [ {
-    "contract" : "ManagerBindContract",
-    "alias" : "manager",
-    "parameterClass" : "null",
-    "value" : null,
+    "contract" : "UserBindContract",
+    "alias" : "usr",
+    "parameterClass" : "com.stibo.core.domain.impl.UserImpl",
+    "value" : "SERVICE-ACCOUNT-INTEGRATION",
     "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (manager) {
-
-var user = manager.getUserHome().getUserByID("LAAL");
-logger.info("User "+user);
-user.setEMail("lalbertsen@mac.com");
+exports.operation0 = function (usr) {
+logger.info(usr.getName());
+logger.info(usr.getValue("ForceAuthentication"));
 }

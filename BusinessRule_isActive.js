@@ -1,7 +1,7 @@
 /*===== export metadata =====
 {
   "contextId" : "Context1",
-  "workspaceId" : "Approved"
+  "workspaceId" : "Main"
 }
 */
 /*===== business rule definition =====
@@ -34,5 +34,5 @@
 }
 */
 exports.operation0 = function (node) {
-return 'sdf'
+return true;
 }
