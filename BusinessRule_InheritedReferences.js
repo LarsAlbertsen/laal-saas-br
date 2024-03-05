@@ -46,7 +46,7 @@ var myRefs = node.getReferences(refType);
 logger.info("myRefs="+myRefs);
 
 myRefs.forEach(function(r) {
-	logger.info("r="+r);
+	logger.info("r="+r+" source="+r.getSource());
 });
 
 
@@ -54,7 +54,7 @@ var localRefs = node.getLocalReferences(refType);
 logger.info("local="+localRefs);
 
 localRefs.forEach(function(r) {
-	logger.info("r="+r);
+	logger.info("r="+r+" source="+r.getSource());
 });
 
 
