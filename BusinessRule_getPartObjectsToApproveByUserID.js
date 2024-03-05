@@ -79,16 +79,16 @@ function getPartObjectsToApproveByUserID(step, node, logger, userID)
            partObject instanceof com.stibo.core.domain.partobject.TablePartObject || 
            partObject instanceof com.stibo.core.domain.partobject.TableTextsPartObject)
         {
-            continue;
+            //continue;
         }
          
         var editRevision = getEditRevision.invoke(node, partObject);
         if (editRevision)
         {
             var revisionUserID = editRevision.getUserID();
+            logger.info("PartObject "+partObject.toString()+" was edited by user "+revisionUserID);
             if(revisionUserID+"" == userID+"")
             {
-                //logger.info("PartObject "+partObject.toString()+" was edited by user "+userID);
                 setPartobjectsToApprove.add(partObject);
             }
         }
