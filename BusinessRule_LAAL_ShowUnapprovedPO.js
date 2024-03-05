@@ -6,13 +6,13 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "LAAL_DeleteAndApprove",
+  "id" : "LAAL_ShowUnapprovedPO",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "LAAL_DeleteAndApprove",
+  "name" : "LAAL_ShowUnapprovedPO",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Asset user-type root", "AutoClassificationRuleSet", "BusinessRuleExample", "Configuration", "DEFAULT", "Icon", "Illustration", "InstallationManual", "Item", "JPEGImage", "Logo", "MSDS", "OwnersManual", "PDF", "ProductImage", "ProductVideo", "Swatch", "XML", "stibo.BulkUpdateConfig", "stibo.ExportManagerConfig", "stibo.ImageConversionConfig", "stibo.ImportManagerConfig", "stibo.TranslationConfig", "stibo.ValueSubstitutionTransConfig" ],
+  "validObjectTypes" : [ "Item" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
@@ -34,8 +34,10 @@
 }
 */
 exports.operation0 = function (node) {
-if (node!=null) {
-	node.delete().approve();
-}
-
+var po = node.getNonApprovedObjects();
+logger.info("unapproved="+po);
+var foo = node.approve();
+logger.info("foo="+foo);
+var po2 = node.getNonApprovedObjects();
+logger.info("unapproved2="+po2);
 }

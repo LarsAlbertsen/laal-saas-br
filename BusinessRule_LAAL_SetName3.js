@@ -6,9 +6,9 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "LAAL_SetName",
+  "id" : "LAAL_SetName3",
   "type" : "BusinessAction",
-  "setupGroups" : [ "LAALBRGroup" ],
+  "setupGroups" : [ "Actions" ],
   "name" : "LAAL_SetName",
   "description" : null,
   "scope" : "Global",
@@ -45,10 +45,10 @@
 exports.operation0 = function (node,message,lib) {
 /** 
  *  This is a comment *
- */
+ *
 var name = node.getName();
 logger.info("name="+name);
-name = "YY "+name;
+name = "Lars X3 "+name;
 node.setName(name);
 logger.info("Xname="+name);
 
@@ -57,5 +57,20 @@ logger.info("Xname="+name);
 var x = lib.test();
 
 message.addError("Hello ["+name+"]", node);
-return message;
+return message;*
+
+ */
+
+ logger.info("Lars Albertsen! "+node.getName());
+}
+/*===== business rule plugin definition =====
+{
+  "pluginId" : "JavaScriptBusinessActionWithBinds",
+  "binds" : [ ],
+  "messages" : [ ],
+  "pluginType" : "Operation"
+}
+*/
+exports.operation1 = function (lib) {
+// Do nothing
 }

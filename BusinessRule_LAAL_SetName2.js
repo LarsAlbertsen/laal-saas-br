@@ -6,13 +6,13 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "Delete",
+  "id" : "LAAL_SetName2",
   "type" : "BusinessAction",
-  "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "LAAL_Delete(2)",
+  "setupGroups" : [ "Actions" ],
+  "name" : "LAAL_SetName2",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Item", "MyEntity", "ProductImage", "TestItem" ],
+  "validObjectTypes" : [ "Item" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
@@ -28,14 +28,24 @@
     "parameterClass" : "null",
     "value" : null,
     "description" : null
+  }, {
+    "contract" : "DataIssuesContextBind",
+    "alias" : "message",
+    "parameterClass" : "null",
+    "value" : null,
+    "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node) {
-if (node!=null) {
-	node.delete();
-}
+exports.operation0 = function (node,message) {
+var name = node.getName();
+logger.info("Lars Hello World name="+name);
+name = "Version2X "+name;
+node.setName(name);
+logger.info("Xname="+name);
 
+message.addError("Hello ["+name+"]", node);
+return message;
 }

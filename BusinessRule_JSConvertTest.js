@@ -6,10 +6,10 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "ChangePackageTest2",
+  "id" : "JSConvertTest",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "ChangePackageTest2",
+  "name" : "JSConvertTest",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
@@ -22,21 +22,20 @@
 /*===== business rule plugin definition =====
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
-  "binds" : [ {
-    "contract" : "ManagerBindContract",
-    "alias" : "manager",
-    "parameterClass" : "null",
-    "value" : null,
-    "description" : null
-  } ],
+  "binds" : [ ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (manager) {
+exports.operation0 = function () {
+var anInt = new java.lang.Integer(2);
+var nn = null;
+var i = anInt + 2;
+var i2 = nn+2;
 
-var aNode = manager.getNodeFromURL("step://SetupGroup?contextid=Context1&id=CPFeatures&workspaceid=Main");
-logger.info("aNode "+aNode);
+logger.info("anInt "+anInt);
+logger.info("i2 "+i2);
+logger.info("i "+i);
 
 
 }

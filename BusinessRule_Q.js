@@ -6,10 +6,10 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "StopApprove",
-  "type" : "BusinessCondition",
-  "setupGroups" : [ "ApproveActions" ],
-  "name" : "StopApprove",
+  "id" : "Q",
+  "type" : "BusinessAction",
+  "setupGroups" : [ "LAALBRGroup" ],
+  "name" : "Q",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],

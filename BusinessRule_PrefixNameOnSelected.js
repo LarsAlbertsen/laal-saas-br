@@ -47,7 +47,4 @@ for (var i=0; i<selection.size(); i++) {
 	node.setName(newName.trim());
 
 }
-
-
-
 }

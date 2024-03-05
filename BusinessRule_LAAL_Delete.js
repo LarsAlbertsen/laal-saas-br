@@ -12,7 +12,7 @@
   "name" : "LAAL_Delete",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Item", "MyEntity", "ProductImage", "TestItem" ],
+  "validObjectTypes" : [ "Item" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
@@ -34,9 +34,7 @@
 }
 */
 exports.operation0 = function (node) {
-// Documentation is added in second version
 if (node!=null) {
 	node.delete();
 }
-
 }

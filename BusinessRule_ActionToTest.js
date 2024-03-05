@@ -47,5 +47,4 @@ if (attribute == null) {
 }
 var value = node.getValue(attribute.getID());
 value.setSimpleValue("100");
-
 }

@@ -6,10 +6,10 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "LAAL_Approve",
+  "id" : "TestTime",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "LAAL_Approve",
+  "name" : "TestTime",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
@@ -22,18 +22,22 @@
 /*===== business rule plugin definition =====
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
-  "binds" : [ {
-    "contract" : "CurrentObjectBindContract",
-    "alias" : "node",
-    "parameterClass" : "null",
-    "value" : null,
-    "description" : null
-  } ],
+  "binds" : [ ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node) {
-node.approve();
+exports.operation0 = function () {
+var callCount = 10000000;
+var start = java.lang.System.currentTimeMillis();
+var i = 0;
+var str = new java.lang.String();
+while (i++<callCount) {
+	str.toString();
+}
+var end = java.lang.System.currentTimeMillis();
+var timePerCall = (end-start)/callCount;
+logger.info("Time "+(end-start));
+logger.info("timePerCall "+(timePerCall));
 
 }

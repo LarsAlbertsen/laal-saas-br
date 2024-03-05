@@ -6,10 +6,10 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "LAAL_ApproveDelete",
-  "type" : "BusinessAction",
+  "id" : "IncludeInSTEPConfigCP",
+  "type" : "BusinessCondition",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "LAAL_ApproveDelete",
+  "name" : "IncludeInSTEPConfigCP",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
@@ -21,10 +21,10 @@
 */
 /*===== business rule plugin definition =====
 {
-  "pluginId" : "JavaScriptBusinessActionWithBinds",
+  "pluginId" : "JavaScriptBusinessConditionWithBinds",
   "binds" : [ {
-    "contract" : "ManagerBindContract",
-    "alias" : "manager",
+    "contract" : "CurrentObjectBindContract",
+    "alias" : "node",
     "parameterClass" : "null",
     "value" : null,
     "description" : null
@@ -33,23 +33,9 @@
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (manager) {
+exports.operation0 = function (node) {
+logger.info("IncludeInSTEPConfigCP "+node);
 
-var p1 = manager.getProductHome().getProductByID("24050308");
-logger.info("p1="+p1);
-if (p1!=null) {
-	logger.info("delete p1");
-	var p2 = p1.delete()
-	logger.info("p2="+p2);
-	/*if (p2!=null) {
-		logger.info("approve p2");
-		var p3 = p2.approve();
-		if (p3!=null) {
-			logger.info("p3="+p3);
-		}
-	}*/
-}
-
-
+return false;
 
 }

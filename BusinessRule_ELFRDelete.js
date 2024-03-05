@@ -48,7 +48,6 @@
 exports.operation0 = function (logger,manager,node) {
 var x = node.delete()
 x.approve()
-//x.delete()
+//Lars x.delete()
 logger.info(x)
-
 }

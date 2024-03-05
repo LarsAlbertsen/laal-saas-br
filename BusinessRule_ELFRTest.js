@@ -57,22 +57,13 @@ var res = method.invoke(user)
 logger.info(res)
 */
 
+logger.info(node.getTitle())
 
-//var nc = manager.getNodeCollectionHome().getNodeCollectionByID('32159714')
-var nc = manager.getNodeCollectionHome().getNodeCollectionByID('108118')
-
-logger.info(nc)
-var q = nc.queryNodes()
-q.forEach(function(n){
-	logger.info(n)
-	return true;
+manager.executeInContext('Context1', function(m) {
+	var n = m.getObjectFromOtherManager(node)	
+	n.setName('aaaa')
 })
+logger.info(node.getTitle())
 
-
-/*
-var a = manager.getAttributeHome().getAttributeByID('Bullet01')
-logger.info(a.getValidatorName())
-logger.info(a.getValidatorMaximumLength())
-logger.info(a.getValidatorMaximumValue())
-*/
+throw new RuntimeException('adsfasdf')
 }

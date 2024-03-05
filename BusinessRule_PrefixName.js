@@ -40,6 +40,4 @@ if (curName==null) {
 }
 var newName = "Prefix "+curName;
 node.setName(newName);
-
-
 }

@@ -6,10 +6,10 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "FilterFullConfig",
+  "id" : "IsBusinessRules",
   "type" : "BusinessAction",
-  "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "FilterFullConfig",
+  "setupGroups" : [ "ChangePackagesConditions" ],
+  "name" : "IsBusinessRules",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
@@ -23,6 +23,12 @@
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
   "binds" : [ {
+    "contract" : "ManagerBindContract",
+    "alias" : "manager",
+    "parameterClass" : "null",
+    "value" : null,
+    "description" : null
+  }, {
     "contract" : "CurrentEventBatchBinding",
     "alias" : "batch",
     "parameterClass" : "null",
@@ -33,7 +39,7 @@
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (batch) {
+exports.operation0 = function (manager,batch) {
 var doInclude = false;
 var events = batch.getEvents();
 logger.info("PreProcessor events="+events.size());
@@ -45,7 +51,7 @@ for (var i = 0; i <  events.size(); i++) {
 		logger.info("PreProcessor node="+node);
 		logger.info("PreProcessor node.title="+node.getTitle());
 		logger.info("PreProcessor node.value="+node.getValue("ChangePackageDescription").getSimpleValue());
-		if (!"FullConfig".equals(node.getName())) {
+		if (!"TrackChanges".equals(node.getName())) {
 			logger.info("PreProcessor removing");
 			batch.removeEvent(event);
 		}

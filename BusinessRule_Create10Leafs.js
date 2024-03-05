@@ -40,5 +40,4 @@ if (children==null || children.size()==0) {
 		node.createProduct("","Tree");
 	}
 }
-
 }

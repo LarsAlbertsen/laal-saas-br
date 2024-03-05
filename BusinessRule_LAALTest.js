@@ -34,7 +34,15 @@
 }
 */
 exports.operation0 = function (manager) {
+/// STEP Intellisense
+/// <reference path="/Users/laal/.step/jsdoc.js" />
+/** @type {Manager} */
+var manager = manager;
+/// STEP Intellisense
+
+
 var curUser = manager.getCurrentUser();
+
 
 var method =curUser.getClass().getMethod("getObjectType");
 logger.info("Got Method");

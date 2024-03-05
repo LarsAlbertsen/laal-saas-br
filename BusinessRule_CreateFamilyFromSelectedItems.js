@@ -126,5 +126,4 @@ if (newName.length>0) {
 		selection.get(i).setObjectType(VariantObjType);
 	}
 }
-
 }

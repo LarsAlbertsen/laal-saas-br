@@ -49,6 +49,4 @@ exports.operation0 = function (node,isActive,updateDescription) {
 if (isActive.evaluate(node).isAccepted()) {
 	updateDescription.execute(node)
 }
-
-
 }

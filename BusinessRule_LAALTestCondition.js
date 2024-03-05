@@ -6,10 +6,10 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "CheckChangePackage",
+  "id" : "LAALTestCondition",
   "type" : "BusinessCondition",
-  "setupGroups" : [ "Actions" ],
-  "name" : "CheckChangePackage",
+  "setupGroups" : [ "LAALBRGroup" ],
+  "name" : "LAAL Test Condition",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
@@ -23,11 +23,23 @@
 {
   "pluginId" : "JavaScriptBusinessConditionWithBinds",
   "binds" : [ ],
-  "messages" : [ ],
+  "messages" : [ {
+    "variable" : "MyMessage",
+    "message" : "Hello",
+    "translations" : [ {
+      "language" : "da",
+      "message" : "Hej Med Dig"
+    }, {
+      "language" : "de",
+      "message" : "German Version"
+    } ]
+  } ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function () {
-throw "STOP IT!";
+exports.operation0 = function (MyMessage) {
+var msg = new MyMessage();
 
+
+return msg;
 }

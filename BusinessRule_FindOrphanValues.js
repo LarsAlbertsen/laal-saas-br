@@ -41,5 +41,4 @@ for (var i=0; i<allValues.length; i++) {
 		logger.info(node.getID()+"\t"+aValue.getAttribute().getTitle()+"="+aValue.getSimpleValue());
 	}
 }
-
 }

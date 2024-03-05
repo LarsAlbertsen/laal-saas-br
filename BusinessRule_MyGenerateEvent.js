@@ -6,15 +6,15 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "ba_MJANtest",
+  "id" : "MyGenerateEvent",
   "type" : "BusinessAction",
-  "setupGroups" : [ "Actions" ],
-  "name" : "ba_MJANtest",
+  "setupGroups" : [ "LAALBRGroup" ],
+  "name" : "MyGenerateEvent",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
   "allObjectTypesValid" : true,
-  "runPrivileged" : true,
+  "runPrivileged" : false,
   "onApprove" : "Never",
   "dependencies" : [ ]
 }
@@ -22,18 +22,11 @@
 /*===== business rule plugin definition =====
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
-  "binds" : [ {
-    "contract" : "UserBindContract",
-    "alias" : "usr",
-    "parameterClass" : "com.stibo.core.domain.impl.UserImpl",
-    "value" : "SERVICE-ACCOUNT-INTEGRATION",
-    "description" : null
-  } ],
+  "binds" : [ ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (usr) {
-logger.info(usr.getName());
-logger.info(usr.getValue("ForceAuthentication"));
+exports.operation0 = function () {
+logger.info("MyGenerateEvent");
 }

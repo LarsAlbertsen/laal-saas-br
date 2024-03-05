@@ -45,7 +45,4 @@ if (isActive.evaluate(node)) {
 } else {
 	//.... handle inactive node
 }
-
-
-
 }

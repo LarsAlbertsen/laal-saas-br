@@ -6,10 +6,10 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "LAALAuditAction",
+  "id" : "GetRawLOV",
   "type" : "BusinessAction",
-  "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "Audit Action",
+  "setupGroups" : [ "Actions" ],
+  "name" : "GetRawLOV",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
@@ -29,8 +29,14 @@
     "value" : null,
     "description" : null
   }, {
-    "contract" : "CurrentTransitionBindContract",
-    "alias" : "transition",
+    "contract" : "AttributeBindContract",
+    "alias" : "RawLOV",
+    "parameterClass" : "com.stibo.core.domain.impl.AttributeImpl",
+    "value" : "RawLOV",
+    "description" : null
+  }, {
+    "contract" : "AttributeBindContract",
+    "alias" : "RawMultiLOV",
     "parameterClass" : "null",
     "value" : null,
     "description" : null
@@ -39,18 +45,15 @@
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node,transition) {
-logger.info("auditObject "+node + " transition "+transition);
+exports.operation0 = function (node,RawLOV,RawMultiLOV) {
+var v = node.getValue(RawLOV.getID()).getSimpleValue();
 
+logger.info("v=["+v+"]");
 
-var msg = transition.getMessage();
-var event = transition.getEvent();
-var source = transition.getSource();
-var target = transition.getTarget();
+var v3 = node.getValue(RawMultiLOV.getID()).getRawValue();
+logger.info("v3=["+v3+"]");
 
-logger.info("auditObject msg="+msg);
-logger.info("auditObject event="+event);
-logger.info("auditObject source="+source);
-logger.info("auditObject target="+target);
+var v2 = node.getValue(RawLOV.getID()).getRawValue();
+logger.info("v2=["+v2+"]");
 
 }

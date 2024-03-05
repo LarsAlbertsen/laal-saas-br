@@ -6,14 +6,14 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "isActive",
-  "type" : "BusinessCondition",
-  "setupGroups" : [ "ELFRBRGroup" ],
-  "name" : "isActive",
+  "id" : "LongRunningBR",
+  "type" : "BusinessAction",
+  "setupGroups" : [ "LAALBRGroup" ],
+  "name" : "LongRunningBR",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ ],
-  "allObjectTypesValid" : true,
+  "validObjectTypes" : [ "Product user-type root" ],
+  "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
   "dependencies" : [ ]
@@ -21,7 +21,7 @@
 */
 /*===== business rule plugin definition =====
 {
-  "pluginId" : "JavaScriptBusinessConditionWithBinds",
+  "pluginId" : "JavaScriptBusinessActionWithBinds",
   "binds" : [ {
     "contract" : "CurrentObjectBindContract",
     "alias" : "node",
@@ -34,5 +34,16 @@
 }
 */
 exports.operation0 = function (node) {
-return 'sdf'
+var minutes = 20;
+
+for (var i=0; i<minutes; i++) {
+	node.setName("LONGRUNNING "+i);
+	for (var j=0; j<60; j++) {
+		logger.info("LONGRUNNING "+i+"/"+j);
+		java.lang.Thread.sleep(1000);
+		node.setName("LONGRUNNING "+i);
+	}
+}
+
+logger.info("LONGRUNNING done after "+minutes+" minutes");
 }

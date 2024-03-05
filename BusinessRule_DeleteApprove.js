@@ -6,13 +6,13 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "UpdateNameFromID",
+  "id" : "DeleteApprove",
   "type" : "BusinessAction",
-  "setupGroups" : [ "TestBR" ],
-  "name" : "UpdateNameFromID",
+  "setupGroups" : [ "LAALBRGroup" ],
+  "name" : "DeleteApprove",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "TestItem", "Tree" ],
+  "validObjectTypes" : [ "Item" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
@@ -34,5 +34,5 @@
 }
 */
 exports.operation0 = function (node) {
-node.setName(node.getID());
+node.delete();//.approve();
 }

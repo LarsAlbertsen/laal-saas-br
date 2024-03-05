@@ -56,6 +56,4 @@ webui.getSelection().toArray().forEach(function(n) {
 webui.getSelectedSetOfNodes().toArray().forEach(function(n) {
 	log('getSelectedSetOfNodes ' + n)	
 })
-
-
 }

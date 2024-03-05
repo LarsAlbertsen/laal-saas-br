@@ -6,10 +6,10 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "LAAL_CreateUser",
+  "id" : "InspectWorkflow",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "LAAL_CreateUser",
+  "name" : "InspectWorkflow",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
@@ -28,24 +28,29 @@
     "parameterClass" : "null",
     "value" : null,
     "description" : null
-  }, {
-    "contract" : "LoggerBindContract",
-    "alias" : "logger",
-    "parameterClass" : "null",
-    "value" : null,
-    "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (manager,logger) {
-//
-//  Create a new user in system
-//
-var stiboGroup = manager.getGroupHome().getGroupByID("Stibo");
+exports.operation0 = function (manager) {
 
-var newUser = stiboGroup.createUser("NewUser2", "Hello","laal@stibosystems.com");
+var wf = manager.getWorkflowHome().getWorkflowByID("CreateItem")
+logger.info("WF "+wf);
 
-newUser.setName("My New User");
+wf.getStates().toArray().forEach(
+	function(state) {
+		logger.info("STATE "+state);
+		if (state instanceof com.stibo.core.domain.state.State) {
+			logger.info("  isStateFlowFinal "+state.isStateFlowFinal());
+			logger.info("  isInitial "+state.isInitial());
+			logger.info("  isFinal "+state.isFinal());
+			logger.info("  isParallel "+state.isParallel())
+		}
+	}
+);
+
+
+
+//.toArray().forEach(function(v)
 }

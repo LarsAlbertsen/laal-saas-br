@@ -29,7 +29,7 @@
   }, {
     "id" : "ValueGeneratorConfiguration",
     "type" : "com.stibo.valuegenerator.domain.configuration.ValueGeneratorConfiguration",
-    "value" : "SequenceVG"
+    "value" : null
   } ],
   "pluginType" : "Operation"
 }

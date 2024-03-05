@@ -6,14 +6,14 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "RICHwebUIbinder",
-  "type" : "BusinessAction",
-  "setupGroups" : [ "RICHBRGroup" ],
-  "name" : "RICHwebUIbinder",
+  "id" : "Q2",
+  "type" : "BusinessFunction",
+  "setupGroups" : [ "LAALBRGroup" ],
+  "name" : "Q2",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
-  "allObjectTypesValid" : false,
+  "allObjectTypesValid" : true,
   "runPrivileged" : false,
   "onApprove" : "Never",
   "dependencies" : [ ]

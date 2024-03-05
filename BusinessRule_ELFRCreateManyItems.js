@@ -62,5 +62,4 @@ for (var ix = 1; ix<=15000; ix++) {
 	logger.info(item.getID())
 	wf.start(item, 'ELFR')
 }
-
 }

@@ -6,13 +6,13 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "CreateTestAsset",
+  "id" : "ListValidatorNames",
   "type" : "BusinessAction",
-  "setupGroups" : [ "RecycleProject" ],
-  "name" : "CreateTestAsset",
+  "setupGroups" : [ "Actions" ],
+  "name" : "ListValidatorNames",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "TestAssetsSubFolder" ],
+  "validObjectTypes" : [ "Family", "Item", "Variant" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
@@ -28,25 +28,25 @@
     "parameterClass" : "null",
     "value" : null,
     "description" : null
-  }, {
-    "contract" : "ObjectTypeBindContract",
-    "alias" : "assetType",
-    "parameterClass" : "com.stibo.core.domain.impl.ObjectTypeImpl",
-    "value" : "ProductImage",
-    "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node,assetType) {
-var createCount = 0;
-var n = 1000;
-while (node.getAssets().size()<n) {
-	//logger.info("Asset Count "+node.getAssets().size());
-	node.createAsset("",assetType.getID());
-	createCount++;
+exports.operation0 = function (node) {
+var allValues = node.getValues().toArray();
+
+for (var i=0; i<allValues.length; i++) {
+	var aValue = allValues[i];
+	try {
+		var a = aValue.getAttribute();
+		var m1 = a.getClass().getMethod("getValidatorName");
+		var validatorName = m1.invoke(a);
+
+		logger.info(aValue.getAttribute().getTitle()+"="+validatorName);
+	} catch (e) {
+		logger.info("ERROR " +e);
+	}
 }
-logger.info("Created "+createCount+" assets");
 
 }

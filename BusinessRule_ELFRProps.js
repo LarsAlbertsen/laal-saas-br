@@ -45,5 +45,4 @@ set.toArray().forEach(function(k) {
 	if (matches(k))
 		logger.info('ConfigUtil: ' + k + ' = ' + com.stibo.systemconfig.ConfigUtil.getProperty(k))	
 })
-
 }

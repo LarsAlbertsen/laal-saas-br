@@ -6,14 +6,14 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "LAAL_CreateUser",
+  "id" : "LookupTable",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "LAAL_CreateUser",
+  "name" : "LookupTable",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ ],
-  "allObjectTypesValid" : true,
+  "validObjectTypes" : [ "Product user-type root" ],
+  "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
   "dependencies" : [ ]
@@ -28,24 +28,22 @@
     "parameterClass" : "null",
     "value" : null,
     "description" : null
-  }, {
-    "contract" : "LoggerBindContract",
-    "alias" : "logger",
-    "parameterClass" : "null",
-    "value" : null,
-    "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (manager,logger) {
-//
-//  Create a new user in system
-//
-var stiboGroup = manager.getGroupHome().getGroupByID("Stibo");
+exports.operation0 = function (manager) {
+logger.info("begin");
+var h = manager.getHome(com.stibo.lookuptable.domain.LookupTableHome);
+var v = h.getLookupTableValue("My Lookup Table", "MyFrom");
+logger.info("v="+v);
 
-var newUser = stiboGroup.createUser("NewUser2", "Hello","laal@stibosystems.com");
+var table = h.getLookupTable("My Lookup Table");
+var data = table.getSubstitutionData();
+logger.info("data="+data);
+data.put("Hello", "World");
+table.setSubstitutionData(data);
+logger.info("After "+table.getSubstitutionData());
 
-newUser.setName("My New User");
 }
