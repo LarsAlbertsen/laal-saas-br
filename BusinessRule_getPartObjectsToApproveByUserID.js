@@ -44,6 +44,10 @@ exports.operation0 = function (curNode,logger) {
 var result = getPartObjectsToApproveByUserID(curNode.getManager(), curNode, logger, "LAAL");
 logger.info("result="+result);
 
+result.forEach(function(x) {
+	logger.info(x);
+});
+
 /**
  * 
  * @param {Manager} step
@@ -70,30 +74,16 @@ function getPartObjectsToApproveByUserID(step, node, logger, userID)
     {
         var partObject = it.next();
         
-        if(partObject instanceof com.stibo.core.domain.partobject.AttributeLinkPartObject ||
+        if (partObject instanceof com.stibo.core.domain.partobject.AttributeLinkPartObject ||
            partObject instanceof  com.stibo.core.domain.partobject.datacontainertypelink.DataContainerTypeLinkPartObject ||
            partObject instanceof com.stibo.core.domain.partobject.TablePartObject || 
            partObject instanceof com.stibo.core.domain.partobject.TableTextsPartObject)
         {
             continue;
         }
-        /*var getEditRevision = getMethodByName(node.getClass().getSuperclass().getSuperclass().getSuperclass().getSuperclass(), "getEditRevision", logger);
-        if(getEditRevision == null)
-        {
-            logger.warning("Could not found Method getEditRevision(). ");
-            break;
-        }*/
-        
-        var editRevision = null;
-        try
-        {
-            editRevision = getEditRevision.invoke(node, partObject);
-        }
-        catch(e)
-        {
-            logger.warning("Could not invoke Method getEditRevision(). "+e.toString());
-        }
-        if(editRevision)
+         
+        var editRevision = getEditRevision.invoke(node, partObject);
+        if (editRevision)
         {
             var revisionUserID = editRevision.getUserID();
             if(revisionUserID+"" == userID+"")
