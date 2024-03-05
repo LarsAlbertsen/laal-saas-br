@@ -44,4 +44,18 @@ exports.operation0 = function (node,refType) {
 var myRefs = node.getReferences(refType);
 
 logger.info("myRefs="+myRefs);
+
+myRefs.forEach(function(r) {
+	logger.info("r="+r);
+});
+
+
+var localRefs = node.getLocalReferences(refType);
+logger.info("local="+localRefs);
+
+localRefs.forEach(function(r) {
+	logger.info("r="+r);
+});
+
+
 }
