@@ -72,16 +72,43 @@
 exports.operation0 = function (manager,queryHome,a1,a2,a3,itemType,belowProduct) {
 var c = com.stibo.query.condition.Conditions;
 
+/*
 var conditions = c.valueOf(a1).eq("1")
      .or(c.valueOf(a2).eq("2"))
      .or(c.valueOf(a3).eq("3"));
+*/
 
-var querySpecification = queryHome.queryFor(com.stibo.core.domain.Product)
+
+var conditions = c.valueOf(a1).eq("1")
+     .or(c.valueOf(a2).eq("2"))
+     .or(c.valueOf(a3).eq(null));
+
+
+var result = queryHome.queryFor(com.stibo.core.domain.Product)
+    .where(c.objectType(itemType)
+    .and(c.hierarchy().simpleBelow(belowProduct))
+    .and(conditions))
+    .execute();
+
+result.forEach(function(o) {
+	logger.info(o.getTitle());
+	return true;
+});
+
+
+
+
+
+/*
+
+
+var result = queryHome.queryFor(com.stibo.core.domain.Product)
     .where(c.objectType(itemType)
     .and(c.hierarchy().simpleBelow(belowProduct))
     //.except(c.valueOf(publishedWebProducts).lov().id("NO"))
     .and(conditions))
     .execute();
 
-var result = querySpecification.execute();
+ 
+ */
 }
