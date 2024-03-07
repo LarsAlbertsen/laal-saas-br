@@ -54,4 +54,6 @@ logger.info("Back with"+oo);
 
 //logger.info("ObjType="+curUser.getObjectType());
 logger.info("curUser="+curUser.getName());
+// How dow this work
+
 }
