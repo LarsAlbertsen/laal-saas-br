@@ -73,15 +73,16 @@ exports.operation0 = function (manager,queryHome,a1,a2,a3,itemType,belowProduct)
 var c = com.stibo.query.condition.Conditions;
 
 /*
-var conditions = c.valueOf(a1).eq("1")
+var conditions = 
+	c.valueOf(a1).eq("1")
      .or(c.valueOf(a2).eq("2"))
-     .or(c.valueOf(a3).eq("3"));
+     .or(c.not(c.valueOf(a3).exist()));
 */
 
 
 var conditions = c.valueOf(a1).eq("1")
      .or(c.valueOf(a2).eq("2"))
-     .or(c.valueOf(a3).exists());
+     .or(c.valueOf(a3).notExists());
 
 
 var result = queryHome.queryFor(com.stibo.core.domain.Product)
