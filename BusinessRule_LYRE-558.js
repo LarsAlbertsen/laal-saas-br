@@ -52,17 +52,36 @@
     "parameterClass" : "com.stibo.core.domain.impl.AttributeImpl",
     "value" : "a3",
     "description" : null
+  }, {
+    "contract" : "ObjectTypeBindContract",
+    "alias" : "itemType",
+    "parameterClass" : "com.stibo.core.domain.impl.ObjectTypeImpl",
+    "value" : "Item",
+    "description" : null
+  }, {
+    "contract" : "ProductBindContract",
+    "alias" : "belowProduct",
+    "parameterClass" : "com.stibo.core.domain.impl.FrontProductImpl$$Generated$$14",
+    "value" : "102609",
+    "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (manager,queryHome,a1,a2,a3) {
+exports.operation0 = function (manager,queryHome,a1,a2,a3,itemType,belowProduct) {
 var c = com.stibo.query.condition.Conditions;
 
 var conditions = c.valueOf(a1).eq("1")
      .or(c.valueOf(a2).eq("2"))
      .or(c.valueOf(a3).eq("3"));
 
+var querySpecification = queryHome.queryFor(com.stibo.core.domain.Product)
+    .where(c.objectType(itemType)
+    .and(c.hierarchy().simpleBelow(belowProduct))
+    //.except(c.valueOf(publishedWebProducts).lov().id("NO"))
+    .and(conditions))
+    .execute();
 
+var result = querySpecification.execute();
 }
