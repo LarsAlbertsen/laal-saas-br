@@ -81,7 +81,7 @@ var conditions = c.valueOf(a1).eq("1")
 
 var conditions = c.valueOf(a1).eq("1")
      .or(c.valueOf(a2).eq("2"))
-     .or(c.valueOf(a3).eq(null));
+     .or(c.valueOf(a3).exists());
 
 
 var result = queryHome.queryFor(com.stibo.core.domain.Product)
