@@ -34,7 +34,10 @@
 }
 */
 exports.operation0 = function (node) {
+// {Node} 
+var node;
 var allValues = node.getValues().toArray();
+
 
 for (var i=0; i<allValues.length; i++) {
 	var aValue = allValues[i];
