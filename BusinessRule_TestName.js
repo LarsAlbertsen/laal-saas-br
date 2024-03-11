@@ -35,7 +35,10 @@
 */
 exports.operation0 = function (product) {
 
-product.getName();
+/** @type {Product} */
+var product;
+
+var name = product.getName();
 
 logger.info("Name "+name);
 
