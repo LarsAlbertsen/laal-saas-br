@@ -46,6 +46,7 @@ exports.operation0 = function (node,message,lib) {
 /** 
  *  This is a comment *
  *
+
 var name = node.getName();
 logger.info("name="+name);
 name = "Lars X3 "+name;
