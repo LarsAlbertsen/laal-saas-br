@@ -24,7 +24,7 @@
   "pluginId" : "JavaScriptBusinessActionWithBinds",
   "binds" : [ {
     "contract" : "CurrentObjectBindContract",
-    "alias" : "product",
+    "alias" : "productI",
     "parameterClass" : "null",
     "value" : null,
     "description" : null
@@ -33,13 +33,25 @@
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (product) {
+exports.operation0 = function (productI) {
+/** @type {Product} */
+var p;
+
+
+
 
 /** @type {Product} */
-var product;
+var product = productI
 
-var name = product.getName();
+/** type {JavaString} */
+var n = product.getName()
 
-logger.info("Name "+name);
+
+var value = product.getValue("sas")
+
+var l = product.queryChildren().asList(10)
+product.getWorkflowInstanceByID("sa").getTaskByID("sa").triggerLaterByID("sa");
+
+logger.info("Name " +name )
 
 }
