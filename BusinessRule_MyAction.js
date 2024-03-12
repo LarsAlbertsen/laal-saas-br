@@ -6,13 +6,13 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "PrefixNameOnSelected",
+  "id" : "MyAction",
   "type" : "BusinessAction",
-  "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "PrefixNameOnSelected",
+  "setupGroups" : [ "TestBR" ],
+  "name" : "MyAction",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Item" ],
+  "validObjectTypes" : [ ],
   "allObjectTypesValid" : true,
   "runPrivileged" : false,
   "onApprove" : "Never",
@@ -23,8 +23,8 @@
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
   "binds" : [ {
-    "contract" : "WebUiContextBind",
-    "alias" : "web",
+    "contract" : "CurrentObjectBindContract",
+    "alias" : "node",
     "parameterClass" : "null",
     "value" : null,
     "description" : null
@@ -33,21 +33,6 @@
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (web) {
-var selection = web.getSelection();
-for (var i=0; i<selection.size(); i++) {
-	var node = selection.get(i);
-
-	var curName = node.getName();
-	if (curName==null) {
-		curName = "";
-	}
-	var newName = "Prefix "+curName;
-	logger.info("["+newName+"]");
-	node.setName(newName.trim());
-
-}
-
-
-
+exports.operation0 = function (node) {
+logger.info("MyAction on "+node.getID());
 }

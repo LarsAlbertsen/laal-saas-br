@@ -37,8 +37,8 @@
   }, {
     "contract" : "SimpleValueBindContract",
     "alias" : "bullet01V",
-    "parameterClass" : "com.stibo.core.domain.impl.AttributeImpl",
-    "value" : "Bullet01",
+    "parameterClass" : "null",
+    "value" : null,
     "description" : null
   }, {
     "contract" : "CurrentObjectBindContract",
@@ -49,8 +49,8 @@
   }, {
     "contract" : "SimpleValueBindContract",
     "alias" : "bullet02V",
-    "parameterClass" : "com.stibo.core.domain.impl.AttributeImpl",
-    "value" : "Bullet02",
+    "parameterClass" : "null",
+    "value" : null,
     "description" : null
   }, {
     "contract" : "MandatoryContextBind",
@@ -68,7 +68,6 @@ if (currentNode==null) {
 	// From init
 	return true;
 }
-
 logger.info("WebUI_HideBullets on "+currentNode);
 var attrHome = manager.getAttributeHome();
 var bullet01A = attrHome.getAttributeByID("3b8d7d7e-9ff9-4b2b-99ca-57a1ba19eb94");
@@ -98,4 +97,5 @@ if (bullet02V==null) {
 //hidden.setHidden(currentNode, bullet02A)
 //return "["+bullet01V+"]";
 return true;
+
 }

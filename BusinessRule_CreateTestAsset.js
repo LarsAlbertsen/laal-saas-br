@@ -6,20 +6,17 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "LAAL_SetName",
+  "id" : "CreateTestAsset",
   "type" : "BusinessAction",
-  "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "LAAL_SetName",
+  "setupGroups" : [ "RecycleProject" ],
+  "name" : "CreateTestAsset",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Item", "Variant" ],
+  "validObjectTypes" : [ "TestAssetsSubFolder" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
-  "dependencies" : [ {
-    "libraryId" : "myLib",
-    "libraryAlias" : "lib"
-  } ]
+  "dependencies" : [ ]
 }
 */
 /*===== business rule plugin definition =====
@@ -32,30 +29,24 @@
     "value" : null,
     "description" : null
   }, {
-    "contract" : "DataIssuesContextBind",
-    "alias" : "message",
-    "parameterClass" : "null",
-    "value" : null,
+    "contract" : "ObjectTypeBindContract",
+    "alias" : "assetType",
+    "parameterClass" : "com.stibo.core.domain.impl.ObjectTypeImpl",
+    "value" : "ProductImage",
     "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node,message,lib) {
-/** 
- *  This is a comment *
- */
-var name = node.getName();
-logger.info("name="+name);
-name = "X "+name;
-node.setName(name);
-logger.info("Xname="+name);
+exports.operation0 = function (node,assetType) {
+var createCount = 0;
+var n = 1000;
+while (node.getAssets().size()<n) {
+	//logger.info("Asset Count "+node.getAssets().size());
+	node.createAsset("",assetType.getID());
+	createCount++;
+}
+logger.info("Created "+createCount+" assets");
 
-// Hello World
-
-var x = lib.test();
-
-message.addError("Hello ["+name+"]", node);
-return message;
 }

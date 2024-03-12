@@ -82,4 +82,5 @@ function printIfNode(o) {
 		logger.info("o is NOT node");
 	}
 }
+
 }

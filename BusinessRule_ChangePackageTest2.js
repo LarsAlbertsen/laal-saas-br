@@ -6,13 +6,13 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "PrefixNameOnSelected",
+  "id" : "ChangePackageTest2",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "PrefixNameOnSelected",
+  "name" : "ChangePackageTest2",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Item" ],
+  "validObjectTypes" : [ ],
   "allObjectTypesValid" : true,
   "runPrivileged" : false,
   "onApprove" : "Never",
@@ -23,8 +23,8 @@
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
   "binds" : [ {
-    "contract" : "WebUiContextBind",
-    "alias" : "web",
+    "contract" : "ManagerBindContract",
+    "alias" : "manager",
     "parameterClass" : "null",
     "value" : null,
     "description" : null
@@ -33,21 +33,10 @@
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (web) {
-var selection = web.getSelection();
-for (var i=0; i<selection.size(); i++) {
-	var node = selection.get(i);
+exports.operation0 = function (manager) {
 
-	var curName = node.getName();
-	if (curName==null) {
-		curName = "";
-	}
-	var newName = "Prefix "+curName;
-	logger.info("["+newName+"]");
-	node.setName(newName.trim());
-
-}
-
+var aNode = manager.getNodeFromURL("step://SetupGroup?contextid=Context1&id=CPFeatures&workspaceid=Main");
+logger.info("aNode "+aNode);
 
 
 }

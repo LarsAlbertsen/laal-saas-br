@@ -6,13 +6,13 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "PrefixNameOnSelected",
+  "id" : "LAAL_ApproveDelete",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "PrefixNameOnSelected",
+  "name" : "LAAL_ApproveDelete",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Item" ],
+  "validObjectTypes" : [ ],
   "allObjectTypesValid" : true,
   "runPrivileged" : false,
   "onApprove" : "Never",
@@ -23,8 +23,8 @@
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
   "binds" : [ {
-    "contract" : "WebUiContextBind",
-    "alias" : "web",
+    "contract" : "ManagerBindContract",
+    "alias" : "manager",
     "parameterClass" : "null",
     "value" : null,
     "description" : null
@@ -33,19 +33,21 @@
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (web) {
-var selection = web.getSelection();
-for (var i=0; i<selection.size(); i++) {
-	var node = selection.get(i);
+exports.operation0 = function (manager) {
 
-	var curName = node.getName();
-	if (curName==null) {
-		curName = "";
-	}
-	var newName = "Prefix "+curName;
-	logger.info("["+newName+"]");
-	node.setName(newName.trim());
-
+var p1 = manager.getProductHome().getProductByID("24050308");
+logger.info("p1="+p1);
+if (p1!=null) {
+	logger.info("delete p1");
+	var p2 = p1.delete()
+	logger.info("p2="+p2);
+	/*if (p2!=null) {
+		logger.info("approve p2");
+		var p3 = p2.approve();
+		if (p3!=null) {
+			logger.info("p3="+p3);
+		}
+	}*/
 }
 
 

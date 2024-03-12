@@ -40,6 +40,8 @@
 }
 */
 exports.operation0 = function (node,manager) {
+
+
 /*
 var approvedDescription = manager.executeInWorkspace("Approved", function(approvedManager) {
 	logger.info("approvedManager="+approvedManager);
@@ -83,4 +85,5 @@ manager.executeWritePrivileged(function(privilegedManager) {
 	}
 );
 */
+
 }

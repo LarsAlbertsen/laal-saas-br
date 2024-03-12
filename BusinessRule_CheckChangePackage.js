@@ -6,10 +6,10 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "isActive",
+  "id" : "CheckChangePackage",
   "type" : "BusinessCondition",
-  "setupGroups" : [ "ELFRBRGroup" ],
-  "name" : "isActive",
+  "setupGroups" : [ "Actions" ],
+  "name" : "CheckChangePackage",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
@@ -22,17 +22,12 @@
 /*===== business rule plugin definition =====
 {
   "pluginId" : "JavaScriptBusinessConditionWithBinds",
-  "binds" : [ {
-    "contract" : "CurrentObjectBindContract",
-    "alias" : "node",
-    "parameterClass" : "null",
-    "value" : null,
-    "description" : null
-  } ],
+  "binds" : [ ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node) {
-return true;
+exports.operation0 = function () {
+throw "STOP IT!";
+
 }

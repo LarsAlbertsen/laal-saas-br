@@ -6,14 +6,14 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "Create10Items",
+  "id" : "UpdateNameFromID",
   "type" : "BusinessAction",
-  "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "Create 10 Items",
+  "setupGroups" : [ "TestBR" ],
+  "name" : "UpdateNameFromID",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ ],
-  "allObjectTypesValid" : true,
+  "validObjectTypes" : [ "TestItem", "Tree" ],
+  "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
   "dependencies" : [ ]
@@ -34,12 +34,5 @@
 }
 */
 exports.operation0 = function (node) {
-var children = node.getChildren();
-if (children==null || children.size()==0) {
-	logger.info("No Children on "+node.getID());
-	for (var i=0; i<10; i++) {
-		node.createProduct("","Item");
-	}
-}
-
+node.setName(node.getID());
 }

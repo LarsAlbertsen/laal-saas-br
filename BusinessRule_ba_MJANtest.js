@@ -6,15 +6,15 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "Create10Items",
+  "id" : "ba_MJANtest",
   "type" : "BusinessAction",
-  "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "Create 10 Items",
+  "setupGroups" : [ "Actions" ],
+  "name" : "ba_MJANtest",
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ ],
   "allObjectTypesValid" : true,
-  "runPrivileged" : false,
+  "runPrivileged" : true,
   "onApprove" : "Never",
   "dependencies" : [ ]
 }
@@ -23,23 +23,17 @@
 {
   "pluginId" : "JavaScriptBusinessActionWithBinds",
   "binds" : [ {
-    "contract" : "CurrentObjectBindContract",
-    "alias" : "node",
-    "parameterClass" : "null",
-    "value" : null,
+    "contract" : "UserBindContract",
+    "alias" : "usr",
+    "parameterClass" : "com.stibo.core.domain.impl.UserImpl",
+    "value" : "SERVICE-ACCOUNT-INTEGRATION",
     "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node) {
-var children = node.getChildren();
-if (children==null || children.size()==0) {
-	logger.info("No Children on "+node.getID());
-	for (var i=0; i<10; i++) {
-		node.createProduct("","Item");
-	}
-}
-
+exports.operation0 = function (usr) {
+logger.info(usr.getName());
+logger.info(usr.getValue("ForceAuthentication"));
 }

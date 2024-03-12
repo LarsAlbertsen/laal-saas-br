@@ -12,7 +12,7 @@
   "name" : "LAAL_LotsOfGarbage",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Item" ],
+  "validObjectTypes" : [ "Item", "TestItem" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
@@ -46,17 +46,18 @@
 }
 */
 exports.operation0 = function (node,manager,logger) {
-var numberOfRevisions = 20;
+var numberOfRevisions = 10;
 
 var startTime = java.lang.System.currentTimeMillis();
 var revBefore = node.getRevisions().size();
 var count=0;
-for (var r=0; r<1000; r++) {
+for (var r=1; r<=10; r++) {
 	if (node.getRevisions().size()<numberOfRevisions) {
 		//logger.info("r="+r);
-		for (var i=1; i<=100; i++) {
+		for (var i=1; i<=10; i++) {
 			var attrID = "Garbage-"+i;
 			var attr = manager.getAttributeHome().getAttributeByID(attrID);
+			//logger.info("Got attr "+attrID+" = "+attr);
 			//logger.info(attr.getTitle());
 			node.setSimpleValue(attr, java.util.UUID.randomUUID().toString());
 		}
@@ -67,8 +68,6 @@ for (var r=0; r<1000; r++) {
 if (count>0) {
 	var endTime = java.lang.System.currentTimeMillis();
 	logger.info("LotsOfGarbage ID="+node.getID()+" revBefore="+ revBefore + " revAfter="+ node.getRevisions().size()+   " revCreated="+count+ " time="+((endTime-startTime)/1000));
-} else {
-	logger.info("LotsOfGarbage Nothing for ID="+node.getID()+" revBefore="+ revBefore);
 }
 
 }

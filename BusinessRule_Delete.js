@@ -6,20 +6,17 @@
 */
 /*===== business rule definition =====
 {
-  "id" : "LAAL_SetName",
+  "id" : "Delete",
   "type" : "BusinessAction",
   "setupGroups" : [ "LAALBRGroup" ],
-  "name" : "LAAL_SetName",
+  "name" : "LAAL_Delete(2)",
   "description" : null,
   "scope" : "Global",
-  "validObjectTypes" : [ "Item", "Variant" ],
+  "validObjectTypes" : [ "Item", "MyEntity", "ProductImage", "TestItem" ],
   "allObjectTypesValid" : false,
   "runPrivileged" : false,
   "onApprove" : "Never",
-  "dependencies" : [ {
-    "libraryId" : "myLib",
-    "libraryAlias" : "lib"
-  } ]
+  "dependencies" : [ ]
 }
 */
 /*===== business rule plugin definition =====
@@ -31,31 +28,14 @@
     "parameterClass" : "null",
     "value" : null,
     "description" : null
-  }, {
-    "contract" : "DataIssuesContextBind",
-    "alias" : "message",
-    "parameterClass" : "null",
-    "value" : null,
-    "description" : null
   } ],
   "messages" : [ ],
   "pluginType" : "Operation"
 }
 */
-exports.operation0 = function (node,message,lib) {
-/** 
- *  This is a comment *
- */
-var name = node.getName();
-logger.info("name="+name);
-name = "X "+name;
-node.setName(name);
-logger.info("Xname="+name);
+exports.operation0 = function (node) {
+if (node!=null) {
+	node.delete();
+}
 
-// Hello World
-
-var x = lib.test();
-
-message.addError("Hello ["+name+"]", node);
-return message;
 }
