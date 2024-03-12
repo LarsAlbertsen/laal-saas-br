@@ -46,10 +46,7 @@
 }
 */
 exports.operation0 = function (manager,MyFunction,MyAction) {
-/** @type {Manager} */
-var m = manager;
-var newNode = m.getProductHome().getProductByID("DiscontinuedProductsRoot").createProduct("", "Item");
-
+var newNode = manager.getProductHome().getProductByID("DiscontinuedProductsRoot").createProduct("", "Item");
 logger.info("Got new Node")
 
 var v = MyFunction.evaluate();
@@ -58,5 +55,6 @@ logger.info("function done "+v);
 var v = MyAction.execute(newNode);
 logger.info("action done "+v);
 
+logger.info(""+arguments.callee.name)
 throw "Success"
 }
