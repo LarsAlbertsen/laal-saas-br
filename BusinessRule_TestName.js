@@ -38,14 +38,14 @@ exports.operation0 = function (productI) {
 /** @type {Product} */
 var product = productI
 
-/** type {JavaString} */
-var n = product.getName()
+var name = product.getName()
 
 
 var value = product.getValue("sas")
 
 var l = product.queryChildren().asList(10)
-product.getWorkflowInstanceByID("sa").getTaskByID("sa").triggerLaterByID("sa");
+
+product.getWorkflowInstanceByID("sa").getTaskByID("sa").triggerLaterByID("sa")
 
 logger.info("Name " +name )
 
