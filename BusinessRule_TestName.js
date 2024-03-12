@@ -34,11 +34,6 @@
 }
 */
 exports.operation0 = function (productI) {
-/** @type {Product} */
-var p;
-
-
-
 
 /** @type {Product} */
 var product = productI
