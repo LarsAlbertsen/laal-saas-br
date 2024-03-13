@@ -49,12 +49,22 @@ exports.operation0 = function (manager,MyFunction,MyAction) {
 var newNode = manager.getProductHome().getProductByID("DiscontinuedProductsRoot").createProduct("", "Item");
 logger.info("Got new Node")
 
+
 var v = MyFunction.evaluate();
 logger.info("function done "+v);
 
 var v = MyAction.execute(newNode);
 logger.info("action done "+v);
 
+
+
 logger.info(""+arguments.callee.name)
 throw "Success"
+
+
+
+/** @type {JavaLangString} */
+var ssname = newNode.getName();
+
+
 }
