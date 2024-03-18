@@ -34,15 +34,20 @@
 }
 */
 exports.operation0 = function (node) {
-log("on "+node.getID());
 /** @type{Product} */
 var p = node;
 
+log("on "+p.getID()+ "/"+p.getManager().getCurrentWorkspace().getID());
+
+
 var nonApproved = p.getNonApprovedObjects();
+logger.info("nonApproved="+nonApproved)
+
 nonApproved.forEach(element => {
     log(p.getID()+"\t"+element)
 });
 
+return true
 
 function log(s) {
     logger.info("EventsFilter "+s);
