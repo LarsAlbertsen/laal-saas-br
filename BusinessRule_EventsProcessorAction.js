@@ -39,6 +39,7 @@ var p = node;
 
 log("on "+p.getID()+ "/"+p.getManager().getCurrentWorkspace().getID());
 
+log(" Value "+p.getValue("LAAL_1").getSimpleValue());
 
 var nonApproved = p.getNonApprovedObjects();
 nonApproved.forEach(element => {

@@ -42,6 +42,7 @@ log("on "+p.getID()+ "/"+p.getManager().getCurrentWorkspace().getID());
 
 var nonApproved = p.getNonApprovedObjects();
 logger.info("nonApproved="+nonApproved)
+logger.info("Value "+p.getValue("LAAL_1").getSimpleValue())
 
 nonApproved.forEach(element => {
     log(p.getID()+"\t"+element)
