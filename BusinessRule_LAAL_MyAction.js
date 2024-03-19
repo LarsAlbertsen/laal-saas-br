@@ -13,7 +13,7 @@
   "description" : null,
   "scope" : "Global",
   "validObjectTypes" : [ "TestItem" ],
-  "allObjectTypesValid" : false,
+  "allObjectTypesValid" : true,
   "runPrivileged" : false,
   "onApprove" : "Never",
   "dependencies" : [ ]
@@ -34,5 +34,6 @@
 }
 */
 exports.operation0 = function (node) {
-node.delete();
+var c = new com.stibo.framework.localization.simple.SimpleLocalizerFactory()
+logger.info("c="+c);
 }
